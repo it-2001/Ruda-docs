@@ -111,19 +111,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     West,
 }
 
-let direction = Compass::North
+let direction = Compass.North
 
 switch direction {
-    Compass::North {
+    Compass.North {
         io.println(&quot;North&quot;)
     },
-    Compass::South {
+    Compass.South {
         io.println(&quot;South&quot;)
     },
-    Compass::East {
+    Compass.East {
         io.println(&quot;East&quot;)
     },
-    Compass::West {
+    Compass.West {
         io.println(&quot;West&quot;)
     }
 }
@@ -140,7 +140,7 @@ switch direction {
     West = 1000,
 }
 
-let direction = Compass::North
+let direction = Compass.North
 
 let value = direction as int
 
@@ -157,7 +157,7 @@ io.println(value)
     West = 1000,
 }
 
-let direction = Compass::North
+let direction = Compass.North
 
 let name = direction as string
 
@@ -177,7 +177,7 @@ io.println(name)
 
 impl Compass {
     constructor() {
-        self = Compass::North
+        self = Compass.North
     }
 }
 
