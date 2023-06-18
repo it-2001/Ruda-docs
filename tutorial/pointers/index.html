@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://example.com/tutorial/pointers/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>11. Pointers - Ruda docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Pointers", url: "#_top", children: [
+              {title: "What is a pointer?", url: "#what-is-a-pointer" },
+              {title: "How to declare a pointer?", url: "#how-to-declare-a-pointer" },
+              {title: "Dereferencing a pointer", url: "#dereferencing-a-pointer" },
+              {title: "Pointers to pointers", url: "#pointers-to-pointers" },
+              {title: "Pointers to structs", url: "#pointers-to-structs" },
+              {title: "Type of a pointer", url: "#type-of-a-pointer" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../methods/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../methods/" class="btn btn-xs btn-link">
+        12. Methods
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../enums/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../enums/" class="btn btn-xs btn-link">
+        10. Enums
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="pointers">Pointers</h1>
+<h2 id="what-is-a-pointer">What is a pointer?</h2>
+<p>A pointer is a variable that stores the address of another variable. In other words, a pointer points to another variable.</p>
+<h2 id="how-to-declare-a-pointer">How to declare a pointer?</h2>
+<p>To declare a pointer, we use the <code>&amp;</code> operator.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">fun main() {
+    let a = 5
+    let b = &amp;a
+    io.println(b)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">0x0000000000000001
+</code></pre>
+<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then print the value of <code>b</code> which is the address of <code>a</code>.</p>
+<h2 id="dereferencing-a-pointer">Dereferencing a pointer</h2>
+<p>To dereference a pointer, we use the <code>*</code> operator.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">fun main() {
+    let a = 5
+    let b = &amp;a
+    io.println(*b)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">5
+</code></pre>
+<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then print the value of <code>b</code> which is the address of <code>a</code>. We then dereference <code>b</code> and print the value of <code>a</code>.</p>
+<h2 id="pointers-to-pointers">Pointers to pointers</h2>
+<p>Pointers can point to other pointers.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">fun main() {
+    let a = 5
+    let b = &amp;a
+    let c = &amp;b
+    io.println(*c)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">0x0000000000000001
+</code></pre>
+<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then declare a variable <code>c</code> and assign it the address of <code>b</code>. We then print the value of <code>c</code> which is the address of <code>b</code>. We then dereference <code>c</code> and print the value of <code>b</code>.</p>
+<h2 id="pointers-to-structs">Pointers to structs</h2>
+<p>Pointers can point to structs.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">struct Vector {
+    x: float,
+    y: float,
+}
+
+impl Vector {
+    constructor(x: float, y: float) {
+        this.x = x
+        this.y = y
+    }
+}
+
+fun main() {
+    let a = Vector(1, 2)
+    let b = &amp;a
+    io.println(*b.x)
+    io.println(*b.y)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">1
+2
+</code></pre>
+<h2 id="type-of-a-pointer">Type of a pointer</h2>
+<p>The type of a pointer is <code>&amp;T</code> where <code>T</code> is the type of the variable it points to.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">fun main() {
+    let a = 5
+    let b: &amp;int = &amp;a
+}
+</code></pre>
+<p>Here <code>b</code> is a pointer to an <code>int</code>. Pointer to pointer would be <code>&amp;&amp;T</code> and so on.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../methods/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../methods/" class="btn btn-xs btn-link">
+        12. Methods
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../enums/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../enums/" class="btn btn-xs btn-link">
+        10. Enums
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

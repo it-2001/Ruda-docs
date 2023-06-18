@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://example.com/tutorial/overloads/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>17. Overloads - Ruda docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Overloads", url: "#_top", children: [
+              {title: "Traits", url: "#traits" },
+              {title: "Overloadable operators", url: "#overloadable-operators" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-link">
+        1. Basic Syntax
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../traits/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../traits/" class="btn btn-xs btn-link">
+        16. Traits
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="overloads">Overloads</h1>
+<p>More specifically, operator overloading. This is a feature that allows you to define the behavior of operators when applied to your own types. For example, you can define what happens when you add two instances of your class together, or when you compare them for equality.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">struct Vector {
+    x: float,
+    y: float,
+}
+
+impl Vector {
+    constructor(x: float, y: float) {
+        this.x = x
+        this.y = y
+    }
+
+    overload + (other: &amp;Vector) -&gt; Vector {
+        return Vector(this.x + other.x, this.y + other.y)
+    }
+
+    overload == (other: &amp;Vector) -&gt; bool {
+        return this.x == other.x &amp;&amp; this.y == other.y
+    }
+
+    overload != (other: &amp;Vector) -&gt; bool {
+        return !(this == other)
+    }
+}
+
+fun main() {
+    let a = Vector(1, 2)
+    let b = Vector(3, 4)
+    let c = a + b
+    io.println(c.x)
+    io.println(c.y)
+    io.println(a == b)
+    io.println(a != b)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">4
+6
+false
+true
+</code></pre>
+<p>In this example, we define the <code>Vector</code> struct with two fields: <code>x</code> and <code>y</code>. We then define the <code>+</code>, <code>==</code> and <code>!=</code> operators for the <code>Vector</code> struct. The <code>+</code> operator adds the <code>x</code> and <code>y</code> fields of the two vectors together and returns a new vector with the result. The <code>==</code> operator compares the <code>x</code> and <code>y</code> fields of the two vectors and returns <code>true</code> if they are equal and <code>false</code> otherwise. The <code>!=</code> operator returns the opposite of the <code>==</code> operator.</p>
+<h2 id="traits">Traits</h2>
+<p>Overloads can also be used inside traits. This allows you to define the behavior of operators for types that implement the trait.</p>
+<p>Example:</p>
+<pre><code class="language-Ruda">trait Addable {
+    overload + (other: &amp;Self) -&gt; Self
+}
+
+struct Vector {
+    x: float,
+    y: float,
+}
+
+impl Vector {
+    constructor(x: float, y: float) {
+        this.x = x
+        this.y = y
+    }
+}
+
+impl Vector trait Addable {
+    overload + (other: &amp;Vector) -&gt; Vector {
+        return Vector(this.x + other.x, this.y + other.y)
+    }
+}
+
+fun main() {
+    let a = Vector(1, 2)
+    let b = Vector(3, 4)
+    let c = a + b
+    io.println(c.x)
+    io.println(c.y)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">4
+6
+</code></pre>
+<p>In this example, we define the <code>Addable</code> trait with an <code>+</code> operator. We then implement the <code>Addable</code> trait for the <code>Vector</code> struct. This allows us to use the <code>+</code> operator on <code>Vector</code> instances.</p>
+<h2 id="overloadable-operators">Overloadable operators</h2>
+<p>The following operators can be overloaded:</p>
+<ul>
+<li><code>+</code></li>
+<li><code>-</code></li>
+<li><code>*</code></li>
+<li><code>/</code></li>
+<li><code>%</code></li>
+<li><code>==</code></li>
+<li><code>!=</code></li>
+<li><code>&lt;</code></li>
+<li><code>&gt;</code></li>
+<li><code>&lt;=</code></li>
+<li><code>&gt;=</code></li>
+<li><code>!</code></li>
+<li><code>&amp;&amp;</code></li>
+<li><code>||</code></li>
+<li><code>&amp;</code></li>
+<li><code>|</code></li>
+<li><code>[</code></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-link">
+        1. Basic Syntax
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../traits/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../traits/" class="btn btn-xs btn-link">
+        16. Traits
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
