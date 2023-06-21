@@ -37,6 +37,7 @@
               {title: "Calling a function", url: "#calling-a-function" },
               {title: "Parameters", url: "#parameters" },
               {title: "Return values", url: "#return-values" },
+              {title: "Anonymous functions", url: "#anonymous-functions" },
           ]},
         ];
 
@@ -108,12 +109,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 <p>This function takes a parameter called <code>name</code> of type <code>string</code>. The function body prints the name to the console.</p>
 <p>Call the function like this:</p>
-<pre><code class="language-Ruda">greet(&quot;John&quot;)
+<pre><code class="language-Ruda">greet(&quot;Terry&quot;)
 </code></pre>
 <p>Output:</p>
-<pre><code class="language-bash">John
+<pre><code class="language-bash">Terry
 </code></pre>
-<p>Here we are passing the string <code>"John"</code> to the function where it can be used as the <code>name</code> parameter.</p>
+<p>Here we are passing the string <code>"Terry"</code> to the function where it can be used as the <code>name</code> parameter.</p>
 <h2 id="return-values">Return values</h2>
 <p>Functions can return values. The return type is specified after the parameter list. The return type can be any type.</p>
 <pre><code class="language-Ruda">fun add(a: int, b: int): int {
@@ -125,6 +126,24 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="language-Ruda">let result = add(1, 2)
 </code></pre>
 <p>Here we are passing the integers <code>1</code> and <code>2</code> to the function where they can be used as the <code>a</code> and <code>b</code> parameters. The function returns the sum of the two numbers, which is then stored in the <code>result</code> variable.</p>
+<h2 id="anonymous-functions">Anonymous functions</h2>
+<p>Functions can be defined without a name. These are called anonymous functions. Anonymous functions are useful for passing functions as arguments to other functions.</p>
+<pre><code class="language-Ruda">let add = fun(a: int, b: int): int {
+    return a + b
+}
+</code></pre>
+<p>This function can be called like this:</p>
+<pre><code class="language-Ruda">let result = add(1, 2)
+</code></pre>
+<p>But it can also be passed as an argument to another function like this:</p>
+<pre><code class="language-Ruda">let result = [1, 2, 3].map(fun(n: int): int {
+    return n * 2
+})
+
+// or
+
+let result = [1, 2, 3].map(add)
+</code></pre>
 
   <br>
     

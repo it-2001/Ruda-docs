@@ -34,7 +34,9 @@
       var is_top_frame = (window === window.parent);
         
         var pageToc = [
-          {title: "Ruda lang", url: "#_top", children: [
+          {title: "Ruda Documentation", url: "#_top", children: [
+              {title: "What is Ruda?", url: "#what-is-ruda" },
+              {title: "Getting started", url: "#getting-started" },
           ]},
         ];
 
@@ -136,6 +138,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/overloads/" class="wm-article-link wm-toc-text">17. Overloads</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/memory-management/" class="wm-article-link wm-toc-text">18. Memory Management</a>
+</li>
   </ul>
 </li>
 
@@ -143,7 +147,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/basic/" class="wm-article-link wm-toc-text">1. Basic Syntax</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/keywords/" class="wm-article-link wm-toc-text">Keywords</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/basic/" class="wm-article-link wm-toc-text">Basic Syntax</a>
 </li>
   </ul>
 </li>
@@ -190,7 +196,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="ruda-lang">Ruda lang</h1>
+    <h1 id="ruda-documentation">Ruda Documentation</h1>
+<h2 id="what-is-ruda">What is Ruda?</h2>
+<p>Ruda is a general purpose programming language that combines the best programming practices and ease of use.</p>
+<p>Extra focus is put on the following:</p>
+<ul>
+<li><strong>flexibility</strong> - Ruda is a multiparadigm language that allows you to write code in a functional, imperative, object-oriented, or procedural style.</li>
+<li><strong>simplicity</strong> - Ruda is designed to be easy to learn and use. It has a simple syntax and a small number of keywords.</li>
+<li><strong>safety</strong> - Ruda is a statically typed language. It also has a built-in garbage collector that allows you to take charge of memory management if needed.</li>
+</ul>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="installation"><a href="installation/">Installation</a></h3>
+<h3 id="hello-world"><a href="tutorial/hello-world/">Hello, world!</a></h3>
+<h3 id="first-program"><a href="projects/number-guessing-game/">First program</a></h3>
 
   <br>
     
@@ -225,5 +243,5 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </html>
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-06-18 22:42:56.568794+00:00
+Build Date UTC : 2023-06-21 19:55:58.554374+00:00
 -->
