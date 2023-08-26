@@ -34,7 +34,7 @@
         var pageToc = [
           {title: "Installation", url: "#_top", children: [
               {title: "Prerequisites", url: "#prerequisites" },
-              {title: "Cloning the repositories", url: "#cloning-the-repositories" },
+              {title: "Cloning the repository", url: "#cloning-the-repository" },
               {title: "Building", url: "#building" },
           ]},
         ];
@@ -62,12 +62,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../tutorial/hello-world/" class="btn btn-xs btn-default pull-right">
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../tutorial/hello-world/" class="btn btn-xs btn-link">
-        1. Hello World
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-link">
+        0. New Project
       </a>
     </div>
     
@@ -94,23 +94,12 @@ Ruda is still in development, so there is no official release yet. However, you 
 <ul>
 <li><a href="https://www.rust-lang.org/tools/install">Rust</a></li>
 </ul>
-<h2 id="cloning-the-repositories">Cloning the repositories</h2>
+<h2 id="cloning-the-repository">Cloning the repository</h2>
 <ul>
-<li><a href="https://github.com/it-2001/Rusty-compiler">compiler</a></li>
-<li><a href="https://github.com/it-2001/rusty-vm">virtual machine</a></li>
-<li><a href="https://github.com/it-2001/io">std.io</a></li>
-<li><a href="https://github.com/it-2001/string">std.string</a></li>
+<li><a href="https://github.com/it-2001/Ruda">Ruda</a></li>
 </ul>
 <h2 id="building">Building</h2>
-<p>Go to the compiler directory and modify the <code>Cargo.toml</code> file to point to the correct paths of the stdlib repositories and VM. Then run the following command:</p>
-<pre><code class="language-bash">cargo build
-</code></pre>
-<p>This will build the compiler and place the executable in the <code>target/debug</code> directory.</p>
-<p>For VM and stdlib, run the following command in their respective directories:</p>
-<pre><code class="language-bash">cargo build
-</code></pre>
-<p>This will build the VM and stdlib and place the executables in the <code>target/debug</code> directory.</p>
-<p>Now you should be able to run the compiler.</p>
+<p>There is a guide on how to build Ruda in the github repository. It will be updated as the project progresses.</p>
 
   <br>
     
@@ -123,12 +112,12 @@ Ruda is still in development, so there is no official release yet. However, you 
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../tutorial/hello-world/" class="btn btn-xs btn-default pull-right">
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../tutorial/hello-world/" class="btn btn-xs btn-link">
-        1. Hello World
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-link">
+        0. New Project
       </a>
     </div>
     

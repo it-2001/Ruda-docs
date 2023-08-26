@@ -2,117 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://example.com/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/installation/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/cheatsheet/basic/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/cheatsheet/keywords/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/cheatsheet/package-manager/</loc>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/projects/number-guessing-game/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/comments/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/constants/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/control-flow/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/data-types/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/enums/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/error-handling/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/functions/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/generics/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/hello-world/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/memory-management/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/methods/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/modules/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/tutorial/new-project/</loc>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/operators/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/overloads/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/pointers/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/structs/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/traits/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://example.com/tutorial/variables/</loc>
-         <lastmod>2023-06-21</lastmod>
+         <lastmod>2023-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
