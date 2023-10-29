@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/operators/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>3. Operators - Ruda docs</title>
+    <title>3. Operators - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -37,7 +37,8 @@
               {title: "Assignment Operators", url: "#assignment-operators" },
               {title: "Comparison Operators", url: "#comparison-operators" },
               {title: "Logical Operators", url: "#logical-operators" },
-              {title: "Error Handling Operators", url: "#error-handling-operators" },
+          ]},
+          {title: "Error handling operators", url: "#error-handling-operators", children: [
           ]},
         ];
 
@@ -86,8 +87,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="operators">Operators</h1>
+<p>This page contains a list of all operators in Ruda. If you are new to programming, you can skip this page for now and return when you need to learn about a specific operator.</p>
 <h2 id="arithmetic-operators">Arithmetic Operators</h2>
-<p>Sometimes you need to perform arithmetic operations on variables. For example, you may need to increment or decrement a variable's value. The following arithmetic operators are supported by the language:</p>
+<p>Sometimes you need to perform arithmetic operations on variables. For example, you may need to increment or decrement a variable's value.</p>
 <table>
 <thead>
 <tr>
@@ -119,24 +121,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </tr>
 <tr>
 <td><code>%</code></td>
-<td>Modulo</td>
+<td>Modulus</td>
 <td><code>x % y</code></td>
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 5
-let y = 2
-let z = x + y
+<p>example:</p>
+<pre><code class="language-ruda">let x = 5
+let y = 10
+
+let sum = x + y
+let difference = x - y
+// ... and so on
 </code></pre>
-<p>Statements can also be grouped using parentheses. For example:</p>
-<pre><code class="language-Ruda">let x = 5
-let y = 2
-let z = (x + y) * 2
-</code></pre>
-<p>Here the expression <code>(x + y)</code> is evaluated first, then the result is multiplied by <code>2</code>.</p>
 <h2 id="assignment-operators">Assignment Operators</h2>
-<p>Assignment operators are used to assign values to variables. The following assignment operators are supported by the language:</p>
+<p>Assignment operators are used to assign values to variables.</p>
 <table>
 <thead>
 <tr>
@@ -173,13 +172,16 @@ let z = (x + y) * 2
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 5
-x += 2
+<p>example:</p>
+<pre><code class="language-ruda">let x = 5
+let y = 10
+
+x += y // the same as: x = x + y
+
+// ... and so on
 </code></pre>
-<p>We use the <code>+=</code> operator to add <code>2</code> to the value of <code>x</code>. This is equivalent to <code>x = x + 2</code>. If we print the value of <code>x</code> now, we get <code>7</code>.</p>
 <h2 id="comparison-operators">Comparison Operators</h2>
-<p>Comparison operators are used to compare values. The following comparison operators are supported by the language:</p>
+<p>Comparison operators are used to compare values.</p>
 <table>
 <thead>
 <tr>
@@ -221,14 +223,15 @@ x += 2
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 5
-let y = 2
-let z = x &gt; y
+<p>example:</p>
+<pre><code class="language-ruda">let x = 5
+let y = 10
+
+let equal = x == y // false
+// ... and so on
 </code></pre>
-<p>Here we compare the values of <code>x</code> and <code>y</code> using the <code>&gt;</code> operator. Since <code>x</code> is greater than <code>y</code>, the result is <code>true</code>.</p>
 <h2 id="logical-operators">Logical Operators</h2>
-<p>Logical operators are used to combine boolean expressions. The following logical operators are supported by the language:</p>
+<p>Logical operators are used to combine boolean expressions.</p>
 <table>
 <thead>
 <tr>
@@ -255,8 +258,8 @@ let z = x &gt; y
 </tr>
 </tbody>
 </table>
-<h2 id="error-handling-operators">Error Handling Operators</h2>
-<p>Error handling operators are used to handle errors. The following error handling operators are supported by the language:</p>
+<h1 id="error-handling-operators">Error handling operators</h1>
+<p>Error handling operators are used to handle errors.</p>
 <table>
 <thead>
 <tr>
@@ -268,22 +271,16 @@ let z = x &gt; y
 <tbody>
 <tr>
 <td><code>?</code></td>
-<td>exists</td>
+<td>Exists?</td>
 <td><code>x?</code> returns <code>true</code> if <code>x</code> is not <code>null</code></td>
 </tr>
 <tr>
 <td><code>!</code></td>
-<td>error</td>
-<td>see the <a href="../error-handling/">error handling</a> section for more information</td>
+<td>Trust me</td>
+<td><code>x()!</code> forwards the error if <code>x</code> threw an error</td>
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = true
-let y = false
-let z = x &amp;&amp; y
-</code></pre>
-<p>Here we combine the boolean values of <code>x</code> and <code>y</code> using the <code>&amp;&amp;</code> operator. Since <code>x</code> is <code>true</code> and <code>y</code> is <code>false</code>, the result is <code>false</code>.</p>
 
   <br>
     

@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>13. Modules - Ruda</title>
+    <title>1. Hello World - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -32,11 +32,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Modules", url: "#_top", children: [
-              {title: "What is a module?", url: "#what-is-a-module" },
-              {title: "Creating a module", url: "#creating-a-module" },
-              {title: "Importing a module", url: "#importing-a-module" },
-              {title: "Aliasing a module", url: "#aliasing-a-module" },
+          {title: "Hello world", url: "#_top", children: [
+              {title: "Running the program", url: "#running-the-program" },
           ]},
         ];
 
@@ -63,20 +60,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../variables/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        14. Error Handling
+      <a href="../variables/" class="btn btn-xs btn-link">
+        2. Variables
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../new-project/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../new-project/" class="btn btn-xs btn-link">
+        0. New Project
       </a>
     </div>
     
@@ -84,43 +81,38 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="modules">Modules</h1>
-<p>This will be a short tutorial on how modularity works in Ruda.</p>
-<h2 id="what-is-a-module">What is a module?</h2>
-<p>A module is a file that contains code. Modules can be imported into other modules. This allows you to use the code from one module in another module.</p>
-<h2 id="creating-a-module">Creating a module</h2>
-<p>To create a module, you need to create a file with the <code>.rd</code> extension. This is the extension used for Ruda modules.</p>
-<p>Example:</p>
-<pre><code class="language-ruda">// file: math.rd
-
-fun add(x: int, y: int): int {
-    return x + y
-}
-
-const PI = 3.14
-</code></pre>
-<p>This creates a module named <code>math</code> that contains a function named <code>add</code> and a constant named <code>PI</code>.</p>
-<h2 id="importing-a-module">Importing a module</h2>
-<p>To import a module, you need to use the <code>import</code> keyword, followed by the name of the module.</p>
-<p>Example:</p>
-<pre><code class="language-ruda">import &quot;math&quot;
+    <h1 id="hello-world">Hello world</h1>
+<p>Where else to start than with the classic "Hello world" example.</p>
+<p>Before we start, make sure you have the Ruda virtual machine installed. You can find instructions on how to do that <a href="../../installation/">here</a>.</p>
+<p>When you create a new project, Ruda will automatically create a <code>main.rd</code> file in the <code>src</code> directory. This is where you will write your code.</p>
+<p>Open the <code>main.rd</code> file. You should see the following code:</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
 
 fun main() {
-    let result = math.add(1, 2)
-    io.println(result) // 3
+    io.println(&quot;Hello world&quot;)
 }
 </code></pre>
-<p>This imports the <code>math</code> module and uses the <code>add</code> function from it.</p>
-<h2 id="aliasing-a-module">Aliasing a module</h2>
-<p>You can also alias a module using the <code>as</code> keyword.</p>
-<p>Example:</p>
-<pre><code class="language-ruda">import &quot;math&quot; as m
-
-fun main() {
-    let result = m.add(1, 2)
-    io.println(result) // 3
-}
+<p>Let's go through this line by line.</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
 </code></pre>
+<p>This line imports the <code>io</code> module from the standard library. This module allows you to read and write to the console.</p>
+<pre><code class="language-ruda">fun main() {
+</code></pre>
+<p>This line defines a function called <code>main</code>. This is the entry point of the program. The program will start executing from here.</p>
+<pre><code class="language-ruda">    io.println(&quot;Hello world&quot;)
+</code></pre>
+<p>This line calls the <code>println</code> function from the <code>io</code> module. This function prints the given string to the console.</p>
+<pre><code class="language-ruda">}
+</code></pre>
+<p>This line ends the <code>main</code> function.</p>
+<h2 id="running-the-program">Running the program</h2>
+<p>To run the program, run the following command:</p>
+<pre><code class="language-bash">ruda run
+</code></pre>
+<p>This will build and run the program. If you did everything correctly, you should see the following output:</p>
+<pre><code>Hello world
+</code></pre>
+<p>Congratulations! You have successfully written and run your first Ruda program.</p>
 
   <br>
     
@@ -133,20 +125,20 @@ fun main() {
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../variables/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        14. Error Handling
+      <a href="../variables/" class="btn btn-xs btn-link">
+        2. Variables
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../new-project/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../new-project/" class="btn btn-xs btn-link">
+        0. New Project
       </a>
     </div>
     

@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="None">
     
-    <link rel="canonical" href="https://example.com/">
+    
     <link rel="shortcut icon" href="./img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Ruda docs</title>
+    <title>Ruda</title>
     <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="./css/base.css" rel="stylesheet">
@@ -34,8 +34,7 @@
       var is_top_frame = (window === window.parent);
         
         var pageToc = [
-          {title: "Ruda Documentation", url: "#_top", children: [
-              {title: "What is Ruda?", url: "#what-is-ruda" },
+          {title: "Ruda", url: "#_top", children: [
               {title: "Getting started", url: "#getting-started" },
           ]},
         ];
@@ -81,10 +80,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
     <a href="" class="wm-top-brand wm-top-link wm-vcenter">
       
-        <img class="wm-top-logo" src="./img/logo.png"/>
-      
       <div class="wm-top-title">
-        Ruda docs<br>
+        Ruda<br>
         
       </div>
     </a>
@@ -106,7 +103,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/new-project/" class="wm-article-link wm-toc-text">0. New Project</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/hello-world/" class="wm-article-link wm-toc-text">1. Hello World</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/hello/" class="wm-article-link wm-toc-text">1. Hello World</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/variables/" class="wm-article-link wm-toc-text">2. Variables</a>
 </li>
@@ -130,18 +127,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/methods/" class="wm-article-link wm-toc-text">12. Methods</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/error-handling/" class="wm-article-link wm-toc-text">13. Error Handling</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/modules/" class="wm-article-link wm-toc-text">13. Modules</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/modules/" class="wm-article-link wm-toc-text">14. Modules</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/error-handling/" class="wm-article-link wm-toc-text">14. Error Handling</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/generics/" class="wm-article-link wm-toc-text">15. Generics</a>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Advanced</span>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/traits/" class="wm-article-link wm-toc-text">16. Traits</a>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="tutorial/advanced/hi/" class="wm-article-link wm-toc-text">0. Hello</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/overloads/" class="wm-article-link wm-toc-text">17. Overloads</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="tutorial/advanced/generics/" class="wm-article-link wm-toc-text">1. Generics</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="tutorial/memory-management/" class="wm-article-link wm-toc-text">18. Memory Management</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="tutorial/advanced/traits/" class="wm-article-link wm-toc-text">2. Traits</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="tutorial/advanced/overloads/" class="wm-article-link wm-toc-text">3. Overloading</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="tutorial/advanced/memory/" class="wm-article-link wm-toc-text">4. Memory Management</a>
+</li>
+  </ul>
+</li>
+
   </ul>
 </li>
 
@@ -151,7 +157,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/keywords/" class="wm-article-link wm-toc-text">Keywords</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/basic/" class="wm-article-link wm-toc-text">Basic Syntax</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/operators/" class="wm-article-link wm-toc-text">Operators</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="cheatsheet/syntax/" class="wm-article-link wm-toc-text">Syntax</a>
 </li>
   </ul>
 </li>
@@ -165,8 +173,23 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   </ul>
 </li>
 
-        <li class="wm-toc-li wm-toc-lev1 "><a href="cheatsheet/package-manager/" class="wm-article-link wm-toc-text">Package manager</a>
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Package Manager</span>
 </li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="pacman/help/" class="wm-article-link wm-toc-text">Help</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="pacman/building/" class="wm-article-link wm-toc-text">Building</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="pacman/debugging/" class="wm-article-link wm-toc-text">Debugging</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="pacman/packages/" class="wm-article-link wm-toc-text">Packages</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="pacman/configuration/" class="wm-article-link wm-toc-text">Configuration</a>
+</li>
+  </ul>
+</li>
+
   </ul>
 </nav>
 
@@ -200,19 +223,26 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="ruda-documentation">Ruda Documentation</h1>
-<h2 id="what-is-ruda">What is Ruda?</h2>
-<p>Ruda is a general purpose programming language that combines the best programming practices and ease of use.</p>
+    <h1 id="ruda">Ruda</h1>
+<p>Ruda is a general purpose programming language that aims to be as straightforward as possible.</p>
 <p>Extra focus is put on the following:</p>
 <ul>
-<li><strong>flexibility</strong> - Ruda is a multiparadigm language that allows you to write code in a functional, imperative, object-oriented, or procedural style.</li>
-<li><strong>simplicity</strong> - Ruda is designed to be easy to learn and use. It has a simple syntax and a small number of keywords.</li>
-<li><strong>safety</strong> - Ruda is a statically typed language. It also has a built-in garbage collector that allows you to take charge of memory management if needed.</li>
+<li><strong>Simplicity</strong>: Ruda is designed to be easy to learn and use. It has a simple syntax and a small number of keywords.</li>
+<li><strong>Safety</strong>: Ruda is a statically typed language. It also has a built-in garbage collector that allows you to take charge of memory management if needed.</li>
+<li><strong>Flexibility</strong>: Ruda is a multiparadigm language that allows you to write code in a functional, imperative or object-oriented style. Or maybe a mix of all three.</li>
 </ul>
 <h2 id="getting-started">Getting started</h2>
-<p><a href="installation/">Installation</a></p>
-<p><a href="tutorial/hello-world/">Hello, world!</a></p>
-<p><a href="projects/number-guessing-game/">First program</a></p>
+<ul>
+<li>
+<h3 id="installation"><a href="installation">Installation</a></h3>
+</li>
+<li>
+<h3 id="hello-world"><a href="/tutorial/hello">Hello, world!</a></h3>
+</li>
+<li>
+<h3 id="first-program"><a href="/projects/number-guessing-game">First program</a></h3>
+</li>
+</ul>
 
   <br>
     
@@ -246,6 +276,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </body>
 </html>
 <!--
-MkDocs version : 1.4.3
-Build Date UTC : 2023-08-26 01:54:23.980836+00:00
+MkDocs version : 1.5.3
+Build Date UTC : 2023-10-29 22:57:42.641874+00:00
 -->

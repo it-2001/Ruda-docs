@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/error-handling/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>13. Error Handling - Ruda docs</title>
+    <title>14. Error Handling - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -35,8 +35,9 @@
           {title: "Error handling", url: "#_top", children: [
               {title: "Catch statements", url: "#catch-statements" },
               {title: "Yeet", url: "#yeet" },
+              {title: "Error", url: "#error" },
               {title: "Bang operator", url: "#bang-operator" },
-              {title: "Error declarations", url: "#error-declarations" },
+              {title: "Error declaration", url: "#error-declaration" },
           ]},
         ];
 
@@ -63,20 +64,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../modules/" class="btn btn-xs btn-default pull-right">
+      <a href="../advanced/hi/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../modules/" class="btn btn-xs btn-link">
-        14. Modules
+      <a href="../advanced/hi/" class="btn btn-xs btn-link">
+        0. Hello
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../modules/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
       </a>
     </div>
     
@@ -86,38 +87,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="error-handling">Error handling</h1>
 <p>Sometimes an operation can fail. For example, if you try to open a file that doesn't exist, or if you try to divide by zero. In Ruda, you can handle these errors using the <code>try</code> keyword.</p>
-<pre><code class="language-Ruda">try {
+<pre><code class="language-ruda">try {
     let file = io.open(&quot;file.txt&quot;)
 } catch err {
     io.println(err)
 }
 </code></pre>
-<p>The <code>try</code> keyword is used to execute a block of code that may fail. If the block of code fails, the <code>catch</code> keyword is used to execute a block of code that handles the error.</p>
+<p>The <code>try</code> keyword is used to call a function that can fail. If the function fails, the <code>catch</code> block is executed. The <code>catch</code> block is used to handle the error.</p>
+<p>The <code>catch</code> block takes a variable that stores the error.</p>
 <h2 id="catch-statements">Catch statements</h2>
-<p>Catch statements are used to handle errors. They are similar to <code>if</code> statements, but they are used to handle errors instead of boolean values.</p>
-<pre><code class="language-Ruda">try {
+<p>You can have multiple <code>catch</code> statements to handle different errors.</p>
+<pre><code class="language-ruda">try {
     let file = io.open(&quot;file.txt&quot;)
+} catch err: io.FileNotFound {
+    io.println(err.msg())
 } catch err {
-    io.println(err)
-}
-</code></pre>
-<p>They can also be used to handle specific errors.</p>
-<pre><code class="language-Ruda">try {
-    let file = io.open(&quot;file.txt&quot;)
-} catch err: io.FileNotFoundError {
-    io.println(&quot;file not found&quot;)
-} catch err: io.FileAccessError {
-    io.println(&quot;file access error&quot;)
-} catch err {
-    io.println(err.message())
+    io.println(err.msg())
 }
 </code></pre>
 <h2 id="yeet">Yeet</h2>
 <p>The <code>yeet</code> keyword is used to throw an error.</p>
-<pre><code class="language-Ruda">yeet Error(&quot;something went wrong&quot;)
-</code></pre>
-<p>This is useful for creating your own errors.</p>
-<pre><code class="language-Ruda">fun divide(x: int, y: int)!: int {
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
     if y == 0 {
         yeet Error(&quot;cannot divide by zero&quot;)
     }
@@ -125,35 +115,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     return x / y
 }
 </code></pre>
-<p>On the first line we use the <code>!</code> operator to tell the compiler that this function can fail. Then we use the <code>yeet</code> keyword to throw an error if the divisor is zero.</p>
+<h2 id="error">Error</h2>
+<p>If you dont need to throw an error but you don't care about the error type, you can use the <code>Error</code> type as shown above.</p>
 <h2 id="bang-operator">Bang operator</h2>
-<p>If we know that a function can't fail, we can use the <code>!</code> operator to tell the compiler that it can't fail.</p>
-<pre><code class="language-Ruda">let x = divide(5, 5)!
+<p>If we don't want to handle the error, we can use the bang operator to ignore the error. It will be forwarded to the caller.</p>
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
+    if y == 0 {
+        yeet Error(&quot;cannot divide by zero&quot;)
+    }
+
+    return x / y
+}
+
+fun main() {
+    let result = divide(10, 0)! // this will crash
+}
 </code></pre>
-<p>If the function does fail it will yeet the error to caller of the function.</p>
-<pre><code class="language-Ruda">let x = divide(5, 0)!
-</code></pre>
-<p>If you never properly handle the error, the program will crash.</p>
-<p>All errors must be handled either by using the <code>try</code> keyword or the <code>!</code> operator. If not, the program won't compile.</p>
-<h2 id="error-declarations">Error declarations</h2>
-<p>You can declare your own errors using the <code>error</code> keyword.</p>
-<pre><code class="language-Ruda">error DivisionByZeroError(number: int) {
+<h2 id="error-declaration">Error declaration</h2>
+<p>You can declare an error type using the <code>error</code> keyword.</p>
+<pre><code class="language-ruda">error DivisionByZeroError(number: int) {
     message: &quot;cannot divide by zero&quot;,
     code: 1,
 }
 </code></pre>
-<p>This error can be used like this:</p>
-<pre><code class="language-Ruda">fun divide(x: int, y: int)!: int {
+<p>This can be used like this:</p>
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
     if y == 0 {
-        yeet DivisionByZeroError(x)
+        yeet DivisionByZeroError(y)
     }
 
     return x / y
 }
 </code></pre>
-<p>The error field <code>code</code> is optional. It can be used to identify the error in system. If it is not specified, it will default to <code>1</code>.</p>
+<p>The error field code is optional. It can be used to identify the error. Default value is 1.</p>
 <p>You can also take message as an argument.</p>
-<pre><code class="language-Ruda">error Error(message: string?) {
+<pre><code class="language-ruda">error Error(message: string?) {
     message: {
         if message? {
             return message
@@ -176,20 +172,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../modules/" class="btn btn-xs btn-default pull-right">
+      <a href="../advanced/hi/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../modules/" class="btn btn-xs btn-link">
-        14. Modules
+      <a href="../advanced/hi/" class="btn btn-xs btn-link">
+        0. Hello
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../modules/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
       </a>
     </div>
     

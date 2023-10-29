@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/functions/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>6. Functions - Ruda docs</title>
+    <title>6. Functions - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -34,7 +34,6 @@
         var pageToc = [
           {title: "Functions", url: "#_top", children: [
               {title: "Defining a function", url: "#defining-a-function" },
-              {title: "Calling a function", url: "#calling-a-function" },
               {title: "Parameters", url: "#parameters" },
               {title: "Return values", url: "#return-values" },
               {title: "Anonymous functions", url: "#anonymous-functions" },
@@ -88,62 +87,65 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="functions">Functions</h1>
 <p>Functions are useful for writing code that you want to reuse. They can be defined anywhere in the file, and can be called anywhere in the file. You already know how to use functions, because <code>main</code> is a function.</p>
 <h2 id="defining-a-function">Defining a function</h2>
-<p>Functions are defined using the <code>fun</code> keyword. The function name comes after the <code>fun</code> keyword. The function body is enclosed in curly braces.</p>
-<pre><code class="language-Ruda">fun greet() {
+<p>To define a function, use the <code>fun</code> keyword. The body of the function is enclosed in curly braces.</p>
+<pre><code class="language-ruda">fun greet() {
     io.println(&quot;Hello world&quot;)
 }
 </code></pre>
-<h2 id="calling-a-function">Calling a function</h2>
-<p>Functions are called by writing the function name followed by parentheses.</p>
-<pre><code class="language-Ruda">greet()
+<p>This defines a function called <code>greet</code>. Now we can call the function.</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
+
+fun greet() {
+    io.println(&quot;Hello world&quot;)
+}
+
+fun main() {
+    greet()
+    greet() // We can call the function multiple times
+    greet()
+    greet()
+}
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">Hello world
-</code></pre>
+<p>This will print <code>Hello world</code> to the console 4 times.</p>
 <h2 id="parameters">Parameters</h2>
-<p>Functions can take parameters. Parameters are variables that are passed to the function when it is called. Parameters are enclosed in parentheses after the function name and have specified types. </p>
-<p>Multiple parameters are separated by commas.</p>
-<pre><code class="language-Ruda">fun greet(name: string) {
-    io.println(name)
+<p>Functions can take parameters. Parameters are variables that are passed to the function when it is called. They are used to pass data to the function.</p>
+<pre><code class="language-ruda">fun greet(name: string) {
+    io.println(&quot;Hello &quot; + name)
+}
+
+fun main() {
+    greet(&quot;Terry&quot;)
 }
 </code></pre>
-<p>This function takes a parameter called <code>name</code> of type <code>string</code>. The function body prints the name to the console.</p>
-<p>Call the function like this:</p>
-<pre><code class="language-Ruda">greet(&quot;Terry&quot;)
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">Terry
-</code></pre>
-<p>Here we are passing the string <code>"Terry"</code> to the function where it can be used as the <code>name</code> parameter.</p>
+<p>This will print <code>Hello Terry</code> to the console.</p>
+<p>Parameters need to have a type.</p>
 <h2 id="return-values">Return values</h2>
-<p>Functions can return values. The return type is specified after the parameter list. The return type can be any type.</p>
-<pre><code class="language-Ruda">fun add(a: int, b: int): int {
+<p>Functions can return values. Return values are used to pass data from the function to the caller.</p>
+<pre><code class="language-ruda">fun add(a: int, b: int): int {
     return a + b
 }
+
+fun main() {
+    let result = add(5, 10)
+    io.println(result)
+}
 </code></pre>
-<p>This function takes two parameters of type <code>int</code> and returns their sum.</p>
-<p>Call the function like this:</p>
-<pre><code class="language-Ruda">let result = add(1, 2)
-</code></pre>
-<p>Here we are passing the integers <code>1</code> and <code>2</code> to the function where they can be used as the <code>a</code> and <code>b</code> parameters. The function returns the sum of the two numbers, which is then stored in the <code>result</code> variable.</p>
+<p>This will print <code>15</code> to the console.</p>
+<p>Functions can only return one value which can be of any type.</p>
 <h2 id="anonymous-functions">Anonymous functions</h2>
-<p>Functions can be defined without a name. These are called anonymous functions. Anonymous functions are useful for passing functions as arguments to other functions.</p>
-<pre><code class="language-Ruda">let add = fun(a: int, b: int): int {
-    return a + b
+<p>Functions can be defined without a name. These are called anonymous functions.</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
+
+fun main() {
+    let greet = fun(name: string) {
+        io.println(&quot;Hello &quot; + name)
+    }
+
+    greet(&quot;Terry&quot;)
 }
 </code></pre>
-<p>This function can be called like this:</p>
-<pre><code class="language-Ruda">let result = add(1, 2)
-</code></pre>
-<p>But it can also be passed as an argument to another function like this:</p>
-<pre><code class="language-Ruda">let result = [1, 2, 3].map(fun(n: int): int {
-    return n * 2
-})
-
-// or
-
-let result = [1, 2, 3].map(add)
-</code></pre>
+<p>The type of <code>greet</code> is <code>fun(string)</code>.</p>
+<p>You can write the same thing like this <code>let greet: fun(string) = fun(name: string) { ... }</code>.</p>
 
   <br>
     

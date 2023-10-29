@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/new-project/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>0. New Project - Ruda docs</title>
+    <title>0. New Project - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -32,10 +32,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "New project", url: "#_top", children: [
+          {title: "New Project", url: "#_top", children: [
               {title: "Create a new project", url: "#create-a-new-project" },
-              {title: "Project structure", url: "#project-structure" },
-              {title: "Building the project", url: "#building-the-project" },
               {title: "Running the project", url: "#running-the-project" },
           ]},
         ];
@@ -63,11 +61,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../hello-world/" class="btn btn-xs btn-default pull-right">
+      <a href="../hello/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../hello-world/" class="btn btn-xs btn-link">
+      <a href="../hello/" class="btn btn-xs btn-link">
         1. Hello World
       </a>
     </div>
@@ -84,33 +82,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="new-project">New project</h1>
+    <h1 id="new-project">New Project</h1>
 <h2 id="create-a-new-project">Create a new project</h2>
-<p>To create a new project, you can use the <code>init</code> command:</p>
-<pre><code class="language-bash">ruda init
+<p>To create a new project, run the following command:</p>
+<pre><code class="language-bash">ruda init hello
 </code></pre>
-<p>This will create a new project in the current directory.</p>
-<h2 id="project-structure">Project structure</h2>
-<p>A Ruda project consists of the following files:</p>
-<ul>
-<li><code>src/main.rd</code> - The main file of the project. This is where the <code>main</code> function is defined.</li>
-<li><code>Ruda.toml</code> - A file that contains information about the project.</li>
-<li><code>.gitignore</code> - A file that tells Git which files to ignore.</li>
-</ul>
-<h2 id="building-the-project">Building the project</h2>
-<p>To build the project, you can use the <code>build</code> command:</p>
-<pre><code class="language-bash">ruda build
+<p>This will create a new directory called <code>hello</code> containing the following files:</p>
+<pre><code>src/
+    main.rd
+Ruda.toml
+.gitignore
 </code></pre>
-<p>This will compile the project and create an executable file in the <code>target</code> directory.</p>
 <h2 id="running-the-project">Running the project</h2>
-<p>To run the project, you can use the <code>run</code> command:</p>
+<p>First make sure you are in the project directory:</p>
+<pre><code class="language-bash">cd hello
+</code></pre>
+<p>Then run the following command:</p>
 <pre><code class="language-bash">ruda run
 </code></pre>
-<p>This will compile the project and run the executable file in the <code>target</code> directory.</p>
-<p>In this case the output will be:</p>
-<pre><code class="language-bash">Hello world
+<p>This will build and run the project. You should see the following output:</p>
+<pre><code>Hello, world!
 </code></pre>
-<p>This is all you need to know to get started with Ruda.</p>
 
   <br>
     
@@ -123,11 +115,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../hello-world/" class="btn btn-xs btn-default pull-right">
+      <a href="../hello/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../hello-world/" class="btn btn-xs btn-link">
+      <a href="../hello/" class="btn btn-xs btn-link">
         1. Hello World
       </a>
     </div>

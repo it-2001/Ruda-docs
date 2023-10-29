@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/projects/number-guessing-game/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>1. Number Guessing Game - Ruda docs</title>
+    <title>1. Number Guessing Game - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,11 +33,13 @@
         
         var pageToc = [
           {title: "Number guessing game", url: "#_top", children: [
+              {title: "What are we building?", url: "#what-are-we-building" },
               {title: "Requirements", url: "#requirements" },
               {title: "Example", url: "#example" },
               {title: "Tips", url: "#tips" },
               {title: "Strategy", url: "#strategy" },
               {title: "Solution", url: "#solution" },
+              {title: "Explanation", url: "#explanation" },
           ]},
         ];
 
@@ -64,20 +66,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../cheatsheet/package-manager/" class="btn btn-xs btn-default pull-right">
+      <a href="../../pacman/help/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../cheatsheet/package-manager/" class="btn btn-xs btn-link">
-        Package manager
+      <a href="../../pacman/help/" class="btn btn-xs btn-link">
+        Help
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-default pull-left">
+      <a href="../../cheatsheet/syntax/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../cheatsheet/basic/" class="btn btn-xs btn-link">
-        Basic Syntax
+        Previous</a><a href="../../cheatsheet/syntax/" class="btn btn-xs btn-link">
+        Syntax
       </a>
     </div>
     
@@ -86,13 +88,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="number-guessing-game">Number guessing game</h1>
-<p>Well technicaly this is your second program, but it's the first one that does something interesting.</p>
-<p>In this project you will create a number guessing game. The computer will a predefined number between 1 and 100 and you will try to guess it. The computer will tell you if your guess is too high or too low.</p>
+<p>This is probably your first time writing a program in Ruda. Good luck!</p>
+<h2 id="what-are-we-building">What are we building?</h2>
+<p>In this project you will create a number guessing game. The computer will think of a predefined number between 1 and 100 and you will try to guess it. The computer will tell you if your guess is too high or too low.</p>
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li>The user should be able to guess the number.</li>
 <li>The computer should tell the user if their guess is too high or too low.</li>
-<li>The user should be able to guess again if they guess incorrectly.</li>
 <li>The user should be able to quit the game at any time.</li>
 <li>The user should be told how many guesses it took them to guess the number when they win.</li>
 </ul>
@@ -111,31 +113,31 @@ Guess the number: 28
 Too low!
 Guess the number: 29
 You win! It took you 6 guesses.
+Do you want to play again? (y/n): n
 </code></pre>
 <h2 id="tips">Tips</h2>
 <ul>
-<li>You can use the <code>io.input</code> function to read a line of input from the user.</li>
-<li>You can use the <code>io.println</code> function to print a line of output to the user.</li>
+<li>Use the <code>io.input()</code> function to read user input.</li>
+<li>Use the <code>io.println()</code> function to print output.</li>
 <li>The generated number can be constant.</li>
 </ul>
 <h2 id="strategy">Strategy</h2>
 <blockquote>
-<p>This is a good time to start thinking about how you will structure your code. </p>
+<p>This is a good time to start thinking about how you will structure your code.</p>
 </blockquote>
-<p>In my head I'm focusing on the following parts:</p>
-<ul>
-<li>Ability to ask the user for input until they guess the correct number.</li>
-<li>Changing the game answer based on the user's input.</li>
-<li>Keeping track of how many guesses the user has made.</li>
-<li>Telling the user how many guesses they made when they win.</li>
-</ul>
+<p>In my head I'm focusing on the following parts:
+- Ability to ask the user for input until they guess the correct number.
+- Changing the game answer based on the user's input.
+- Keeping track of how many guesses the user has made.
+- Telling the user how many guesses they made when they win.</p>
 <h2 id="solution">Solution</h2>
 <blockquote>
-<p>I hope you are done with the project before you look at this solution. If you are stuck, try to get unstuck before looking at the solution.</p>
+<p>NO CHEATING!
+Just kidding, but seriously try to solve the problem yourself before looking at the solution.</p>
 </blockquote>
-<pre><code class="language-Ruda">import &quot;std.io&quot;
+<pre><code class="language-ruda">import &quot;std.io&quot;
 
-const answer: int = 29
+const answer = 29
 
 fun main() {
     let guesses = 0
@@ -160,48 +162,47 @@ fun main() {
     }
 }
 </code></pre>
+<h2 id="explanation">Explanation</h2>
 <p>Let's go over the solution.</p>
-<p>First we create a constant called <code>answer</code> and set it to <code>29</code>. This is the number that the user will try to guess.</p>
-<pre><code class="language-Ruda">const answer: int = 29
+<p>First we create a constant called <code>answer</code> and assign it the value of <code>29</code>. This is the number that the user has to guess.</p>
+<pre><code class="language-ruda">const answer = 29
 </code></pre>
-<p>Next we create a variable called <code>guesses</code> and set it to <code>0</code>. This variable will keep track of how many guesses the user has made.</p>
-<pre><code class="language-Ruda">let guesses = 0
+<p>Then we create a variable called <code>guesses</code> and assign it the value of <code>0</code>. This variable will be used to keep track of how many guesses the user has made.</p>
+<pre><code class="language-ruda">let guesses = 0
 </code></pre>
-<p>Next we print a welcome message to the user.</p>
-<p>This message is outside of the loop because we only want to print it once.</p>
-<pre><code class="language-Ruda">io.println(&quot;Welcome to the number guessing game!&quot;)
+<p>After the initial setup, we print a welcome message and tell the user that we are thinking of a number between 1 and 100.</p>
+<pre><code class="language-ruda">io.println(&quot;Welcome to the number guessing game!&quot;)
 io.println(&quot;I am thinking of a number between 1 and 100.&quot;)
 </code></pre>
-<p>Next we create a loop. This loop will keep asking the user for input until they guess the correct number.</p>
-<pre><code class="language-Ruda">loop {
-    ...
+<p>Then we start a loop that will keep asking the user for input until they guess the correct number.</p>
+<pre><code class="language-ruda">loop {
+    // ...
 }
 </code></pre>
-<p>Inside the loop we ask the user for input and store it in a variable called <code>guess</code>.</p>
-<p>Here I cheat a little bit. The <code>io.input</code> function returns a string, but we want to store it in an integer variable. To do this we use the <code>as</code> keyword to cast the string to an integer.</p>
-<pre><code class="language-Ruda">io.print(&quot;Guess the number: &quot;)
+<p>Inside the loop we ask the user to guess the number and read their input.</p>
+<pre><code class="language-ruda">io.print(&quot;Guess the number: &quot;)
 let guess = io.input() as int
 </code></pre>
-<p>Next we increment the <code>guesses</code> variable by <code>1</code> to keep track of how many guesses the user has made.</p>
-<pre><code class="language-Ruda">guesses += 1
+<p>Then we increment the <code>guesses</code> variable by <code>1</code> to keep track of how many guesses the user has made.</p>
+<pre><code class="language-ruda">guesses += 1
 </code></pre>
-<p>Next we check if the user's guess is too low. If it is we print a message to the user.</p>
-<pre><code class="language-Ruda">if guess &lt; answer {
+<p>Then we check if the user's guess is less than the answer. If it is, we tell the user that their guess is too low.</p>
+<pre><code class="language-ruda">if guess &lt; answer {
     io.println(&quot;Too low!&quot;)
 }
 </code></pre>
-<p>Next we check if the user's guess is too high. If it is we print a message to the user.</p>
-<pre><code class="language-Ruda">if guess &gt; answer {
+<p>If the user's guess is not less than the answer, we check if it is greater than the answer. If it is, we tell the user that their guess is too high.</p>
+<pre><code class="language-ruda">} else if guess &gt; answer {
     io.println(&quot;Too high!&quot;)
 }
 </code></pre>
-<p>Next we check if the user's guess is correct. If it is we print a message to the user and break out of the loop.</p>
-<pre><code class="language-Ruda">if guess == answer {
+<p>If the user's guess is not less than or greater than the answer, it must be equal to the answer. In this case we tell the user that they won and how many guesses it took them to guess the number.</p>
+<pre><code class="language-ruda">} else {
     io.println(&quot;You win! It took you &quot; + guesses as string + &quot; guesses.&quot;)
     break
 }
 </code></pre>
-<p>This is the end of the loop. The loop will repeat until the user guesses the correct number.</p>
+<p>Finally we break out of the loop and the program ends.</p>
 
   <br>
     
@@ -214,20 +215,20 @@ let guess = io.input() as int
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../cheatsheet/package-manager/" class="btn btn-xs btn-default pull-right">
+      <a href="../../pacman/help/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../cheatsheet/package-manager/" class="btn btn-xs btn-link">
-        Package manager
+      <a href="../../pacman/help/" class="btn btn-xs btn-link">
+        Help
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../cheatsheet/basic/" class="btn btn-xs btn-default pull-left">
+      <a href="../../cheatsheet/syntax/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../cheatsheet/basic/" class="btn btn-xs btn-link">
-        Basic Syntax
+        Previous</a><a href="../../cheatsheet/syntax/" class="btn btn-xs btn-link">
+        Syntax
       </a>
     </div>
     

@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/pointers/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>11. Pointers - Ruda docs</title>
+    <title>11. Pointers - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -34,11 +34,10 @@
         var pageToc = [
           {title: "Pointers", url: "#_top", children: [
               {title: "What is a pointer?", url: "#what-is-a-pointer" },
-              {title: "How to declare a pointer?", url: "#how-to-declare-a-pointer" },
+              {title: "Creating a pointer", url: "#creating-a-pointer" },
               {title: "Dereferencing a pointer", url: "#dereferencing-a-pointer" },
               {title: "Pointers to pointers", url: "#pointers-to-pointers" },
-              {title: "Pointers to structs", url: "#pointers-to-structs" },
-              {title: "Type of a pointer", url: "#type-of-a-pointer" },
+              {title: "Why use pointers?", url: "#why-use-pointers" },
           ]},
         ];
 
@@ -87,83 +86,47 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="pointers">Pointers</h1>
+<p>We have already seen pointers in the <a href="/tutorial/data-types/#pointers">Data types</a> section. In this section we will learn more about pointers.</p>
 <h2 id="what-is-a-pointer">What is a pointer?</h2>
 <p>A pointer is a variable that stores the address of another variable. In other words, a pointer points to another variable.</p>
-<h2 id="how-to-declare-a-pointer">How to declare a pointer?</h2>
-<p>To declare a pointer, we use the <code>&amp;</code> operator.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">fun main() {
-    let a = 5
-    let b = &amp;a
-    io.println(b)
-}
+<h2 id="creating-a-pointer">Creating a pointer</h2>
+<p>Pointers are created using the <code>&amp;</code> operator.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr = &amp;x
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">0x0000000000000001
+<p>This creates a pointer named <code>ptr</code> that points to the variable <code>x</code>.</p>
+<p>When we print the value of <code>ptr</code>, we get the address of <code>x</code>.</p>
+<pre><code class="language-ruda">io.println(ptr) // a big number
 </code></pre>
-<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then print the value of <code>b</code> which is the address of <code>a</code>.</p>
 <h2 id="dereferencing-a-pointer">Dereferencing a pointer</h2>
-<p>To dereference a pointer, we use the <code>*</code> operator.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">fun main() {
-    let a = 5
-    let b = &amp;a
-    io.println(*b)
-}
+<p>Dereferencing a pointer means accessing the value stored at the address pointed to by the pointer.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr = &amp;x
+io.println(*ptr) // 1
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">5
-</code></pre>
-<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then print the value of <code>b</code> which is the address of <code>a</code>. We then dereference <code>b</code> and print the value of <code>a</code>.</p>
+<p>The <code>*</code> operator is used to dereference a pointer.</p>
 <h2 id="pointers-to-pointers">Pointers to pointers</h2>
-<p>Pointers can point to other pointers.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">fun main() {
-    let a = 5
-    let b = &amp;a
-    let c = &amp;b
-    io.println(*c)
-}
+<p>Pointers can also point to other pointers.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr1 = &amp;x
+let ptr2 = &amp;ptr1
+
+io.println(*ptr2) // a big number
+io.println(**ptr2) // 1
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">0x0000000000000001
-</code></pre>
-<p>In this example, we declare a variable <code>a</code> and assign it the value <code>5</code>. We then declare a variable <code>b</code> and assign it the address of <code>a</code>. We then declare a variable <code>c</code> and assign it the address of <code>b</code>. We then print the value of <code>c</code> which is the address of <code>b</code>. We then dereference <code>c</code> and print the value of <code>b</code>.</p>
-<h2 id="pointers-to-structs">Pointers to structs</h2>
-<p>Pointers can point to structs.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">struct Vector {
-    x: float,
-    y: float,
+<h2 id="why-use-pointers">Why use pointers?</h2>
+<p>Pointers are useful for passing variables by reference. This means that the function can modify the variable passed to it.</p>
+<pre><code class="language-ruda">fun addOne(x: &amp;int) {
+    *x = *x + 1
 }
 
-impl Vector {
-    constructor(x: float, y: float) {
-        this.x = x
-        this.y = y
-    }
-}
-
-fun main() {
-    let a = Vector(1, 2)
-    let b = &amp;a
-    io.println(*b.x)
-    io.println(*b.y)
-}
+let x: int = 1
+addOne(&amp;x)
+io.println(x) // 2
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">1
-2
-</code></pre>
-<h2 id="type-of-a-pointer">Type of a pointer</h2>
-<p>The type of a pointer is <code>&amp;T</code> where <code>T</code> is the type of the variable it points to.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">fun main() {
-    let a = 5
-    let b: &amp;int = &amp;a
-}
-</code></pre>
-<p>Here <code>b</code> is a pointer to an <code>int</code>. Pointer to pointer would be <code>&amp;&amp;T</code> and so on.</p>
 
   <br>
     

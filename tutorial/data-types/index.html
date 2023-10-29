@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/data-types/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>8. Data Types - Ruda docs</title>
+    <title>8. Data Types - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -32,13 +32,13 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Data types", url: "#_top", children: [
-              {title: "Primitive types", url: "#primitive-types" },
-              {title: "Compound types", url: "#compound-types" },
-              {title: "Type aliases", url: "#type-aliases" },
-              {title: "Type casting", url: "#type-casting" },
-              {title: "Type inference", url: "#type-inference" },
-              {title: "Optional types", url: "#optional-types" },
+          {title: "Data Types", url: "#_top", children: [
+              {title: "Primitive Types", url: "#primitive-types" },
+              {title: "Composite Types", url: "#composite-types" },
+              {title: "Pointers", url: "#pointers" },
+              {title: "Type Casting", url: "#type-casting" },
+              {title: "Type Aliases", url: "#type-aliases" },
+              {title: "Optionals", url: "#optionals" },
           ]},
         ];
 
@@ -86,108 +86,116 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="data-types">Data types</h1>
-<h2 id="primitive-types">Primitive types</h2>
+    <h1 id="data-types">Data Types</h1>
+<p>Types describe the kind of data that is stored in a variable. </p>
+<h2 id="primitive-types">Primitive Types</h2>
+<p>Primitive types are the most basic data types.</p>
 <table>
 <thead>
 <tr>
 <th>Type</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>bool</code></td>
-<td>A boolean value.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
 <td><code>int</code></td>
-<td>A signed integer.</td>
-<td><code>5</code>, <code>-5</code></td>
+<td>Integer</td>
+<td><code>1</code></td>
 </tr>
 <tr>
 <td><code>float</code></td>
-<td>A floating point number.</td>
-<td><code>5.0</code>, <code>-5.0</code></td>
+<td>Floating point number</td>
+<td><code>1.0</code></td>
 </tr>
 <tr>
-<td><code>char</code></td>
-<td>A single unicode character.</td>
-<td><code>'a'</code>, <code>'\n'</code></td>
+<td><code>bool</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td><code>string</code></td>
-<td>A string of unicode characters.</td>
-<td><code>"Hello, world!"</code></td>
+<td>String</td>
+<td><code>"Hello, World!"</code></td>
 </tr>
 <tr>
-<td><code>usize</code></td>
-<td>An unsigned integer the size of a pointer.</td>
-<td><code>5</code></td>
+<td><code>char</code></td>
+<td>Character</td>
+<td><code>'a'</code></td>
 </tr>
 <tr>
-<td><code>pointer</code></td>
-<td>A pointer to a value.</td>
-<td><code>&amp;5</code></td>
-</tr>
-<tr>
-<td><code>function</code></td>
-<td>A function.</td>
-<td>Sometimes you want to pass a function as an argument to another function. <code>let f = fun(x: int): int { return x + 1 }</code></td>
+<td><code>unit</code></td>
+<td>Unit</td>
+<td><code>1</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="compound-types">Compound types</h2>
+<h2 id="composite-types">Composite Types</h2>
+<p>Composite types are types that are composed of other types.</p>
 <table>
 <thead>
 <tr>
 <th>Type</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>array</code></td>
-<td>A fixed-size array of values.</td>
-<td><code>[1, 2, 3, 4, 5]</code> or <code>[1; 5]</code></td>
+<td>Array</td>
+<td>let arr: [int] = <code>[1, 2, 3]</code></td>
 </tr>
 <tr>
 <td><code>struct</code></td>
-<td>A struct of values.</td>
+<td>Struct</td>
 <td><code>struct Point { x: int, y: int }</code></td>
 </tr>
 <tr>
 <td><code>enum</code></td>
-<td>An enum of values.</td>
-<td><code>enum Compass { North, South, East, West }</code></td>
+<td>Enum</td>
+<td><code>enum Code { Ok = 200, NotFound = 404 }</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="type-aliases">Type aliases</h2>
-<p>Type aliases are used to give a type a different name. They are often used to abstract away implementation details.</p>
-<pre><code class="language-Ruda">type int = i32
+<h2 id="pointers">Pointers</h2>
+<p>Pointers are used to store the address of a variable.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr: &amp;int = &amp;x
 </code></pre>
-<h2 id="type-casting">Type casting</h2>
-<p>You can cast a value to a different type using the <code>as</code> keyword.</p>
-<pre><code class="language-Ruda">let x: int = 5
-let y: float = x as float
+<p>Another type of pointer is a function pointer. Function pointers are used to store the address of a function.</p>
+<pre><code class="language-ruda">fun add(x: int, y: int): int {
+    return x + y
+}
+
+let ptr = add
 </code></pre>
-<h2 id="type-inference">Type inference</h2>
-<p>Ruda has type inference. This means that the compiler can infer the type of a value based on its usage.</p>
-<pre><code class="language-Ruda">let x = add(5, 5)
+<p>This is useful for passing functions as arguments to other functions.</p>
+<h2 id="type-casting">Type Casting</h2>
+<p>Type casting is used to convert a value from one type to another.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let y = x as float
 </code></pre>
-<p>In this example, the compiler can infer that <code>x</code> is an <code>int</code> because <code>add</code> returns an <code>int</code>.</p>
-<h2 id="optional-types">Optional types</h2>
-<p>Optional types are used to represent a value that may or may not exist. They are useful for handling errors.</p>
-<pre><code class="language-Ruda">let x: int? = 5
+<h2 id="type-aliases">Type Aliases</h2>
+<p>Type aliases help abstract away the implementation details of a type.</p>
+<pre><code class="language-ruda">type FileHandle = uint
+</code></pre>
+<h2 id="optionals">Optionals</h2>
+<p>Optionals are used to represent values that may or may not exist.</p>
+<pre><code class="language-ruda">let x: int? = 1 // x == 1
+
+let y: int? // y == null
+</code></pre>
+<p>Then we can use the <code>?</code> operator to see if the value exists.</p>
+<pre><code class="language-ruda">let x: int? = 1
 
 if x? {
-    io.println(x)
+    // x exists
 } else {
-    io.println(&quot;x is not defined&quot;)
+    // x does not exist
 }
 </code></pre>
 

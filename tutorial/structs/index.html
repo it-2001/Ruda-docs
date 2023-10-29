@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/structs/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>9. Structs - Ruda docs</title>
+    <title>9. Structs - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,11 +33,10 @@
         
         var pageToc = [
           {title: "Structs", url: "#_top", children: [
-              {title: "Defining a struct", url: "#defining-a-struct" },
-              {title: "Creating a struct", url: "#creating-a-struct" },
+              {title: "Creating structs", url: "#creating-structs" },
               {title: "Constructor", url: "#constructor" },
-              {title: "Accessing struct fields", url: "#accessing-struct-fields" },
-              {title: "Updating struct fields", url: "#updating-struct-fields" },
+              {title: "Accessing fields", url: "#accessing-fields" },
+              {title: "Updating fields", url: "#updating-fields" },
           ]},
         ];
 
@@ -87,27 +86,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="structs">Structs</h1>
 <p>As you may have noticed, we already saw a struct in the previous section. A struct is a collection of named values. Structs are useful for grouping related data together.</p>
-<h2 id="defining-a-struct">Defining a struct</h2>
-<p>Structs are defined using the <code>struct</code> keyword. The struct name comes after the <code>struct</code> keyword. The struct body is enclosed in curly braces.</p>
-<pre><code class="language-Ruda">struct Person {
+<p>Structs are declared using the <code>struct</code> keyword.</p>
+<pre><code class="language-ruda">struct Person {
     name: string,
     age: int
 }
 </code></pre>
-<h2 id="creating-a-struct">Creating a struct</h2>
-<p>Structs can be created using their constructor. The constructor is the struct name followed by parentheses. </p>
-<p>You can not create a struct without using its constructor.</p>
-<pre><code class="language-Ruda">let person = Person(&quot;John&quot;, 20)
+<p>This declares a struct named <code>Person</code> with two fields: <code>name</code> and <code>age</code>.</p>
+<h2 id="creating-structs">Creating structs</h2>
+<p>Structs can be created using their constructor. The constructor is the struct name followed by parentheses.</p>
+<pre><code class="language-ruda">let person = Person(&quot;Terry&quot;, 34)
 </code></pre>
 <h2 id="constructor">Constructor</h2>
-<p>The code above won't work because we haven't defined a constructor for the <code>Person</code> struct. We can define a constructor with <code>impl</code> keyword.</p>
-<pre><code class="language-Ruda">struct Person {
+<p>The code above won't work because we haven't defined a constructor for the <code>Person</code> struct because Ruda couldn't generate a constructor for the struct because it has a field of type <code>string</code>.</p>
+<p>We can define a constructor for the <code>Person</code> struct like this:</p>
+<pre><code class="language-ruda">struct Person {
     name: string,
     age: int
 }
 
 impl Person {
-    constructor(name: string, age: int) {
+    fun Person(name: string, age: int) {
         self.name = name
         self.age = age
     }
@@ -116,17 +115,26 @@ impl Person {
 <p>Don't look too much into all the keywords and syntax yet. We will cover them in later sections.</p>
 <p>For now just know that constructor is a function that is called when a struct is created. The constructor is used to initialize the struct fields (name, age).</p>
 <p>Self is a special variable that refers to the struct instance. We use self to access the struct fields.</p>
-<h2 id="accessing-struct-fields">Accessing struct fields</h2>
+<p>Now we can create as many <code>Person</code> structs as we want.</p>
+<pre><code class="language-ruda">let person1 = Person(&quot;Terry&quot;, 34)
+let person2 = Person(&quot;Danda&quot;, 19)
+</code></pre>
+<h2 id="accessing-fields">Accessing fields</h2>
 <p>Struct fields can be accessed using the dot operator.</p>
-<pre><code class="language-Ruda">io.println(person.name)
+<pre><code class="language-ruda">let person = Person(&quot;Terry&quot;, 34)
+
+io.println(person.name) // Terry
+io.println(person.age) // 34
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">John
-</code></pre>
-<p>Here we are accessing the <code>name</code> field of the <code>person</code> struct and printing it to the console.</p>
-<h2 id="updating-struct-fields">Updating struct fields</h2>
+<h2 id="updating-fields">Updating fields</h2>
 <p>Struct fields can be updated using the dot operator.</p>
-<pre><code class="language-Ruda">person.name = &quot;Jane&quot;
+<pre><code class="language-ruda">let person = Person(&quot;Terry&quot;, 34)
+
+person.name = &quot;Danda&quot;
+person.age = 19
+
+io.println(person.name) // Danda
+io.println(person.age) // 19
 </code></pre>
 
   <br>

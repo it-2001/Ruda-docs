@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Syntax - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Ruda for busy people", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../projects/number-guessing-game/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../projects/number-guessing-game/" class="btn btn-xs btn-link">
+        1. Number Guessing Game
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../operators/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../operators/" class="btn btn-xs btn-link">
+        Operators
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="ruda-for-busy-people">Ruda for busy people</h1>
+<p>In this cheatsheet, you'll find a quick overview of the Ruda language. It's not meant to be a complete reference, but rather a quick reference for the most important features of the language.</p>
+<pre><code class="language-ruda">// This is a comment
+
+/*
+This is a multi-line comment
+*/
+
+// Imports
+import &quot;std.io&quot;
+import &quot;std.math&quot; as mt
+
+// Constants
+const PI = 3.14
+
+// Type aliases
+type i32 = int
+
+fun main() {
+    // Variables
+    let x = 5
+    let z: int = x + 50
+
+    // Arrays
+    let arr = [1, 2, 3, 4, 5]      // [1, 2, 3, 4, 5]
+    let arr: [int; 5] = [1; 5]     // [1, 1, 1, 1, 1]
+
+    // If statements
+    if x &gt; y {
+        io.println(&quot;x is greater than y&quot;)
+    } else if x &lt; y {
+        io.println(&quot;x is less than y&quot;)
+    } else {
+        io.println(&quot;x is equal to y&quot;)
+    }
+
+    // Loops
+    for i in math.range(0, 10) {
+        io.println(i)
+
+        // continue and break
+        if i == 5 {
+            continue
+        }
+        if i == 8 {
+            break
+        }
+    } // 0, 1, 2, 3, 4, 6, 7
+
+    // Switch
+    switch x {
+        0 {
+            io.println(&quot;x is 0&quot;)
+        },
+        1 {
+            io.println(&quot;x is 1&quot;)
+        },
+        _ {
+            io.println(&quot;x is not 0 or 1&quot;)
+        }
+    }
+
+    // Error handling
+    let result;
+    try {
+        result = math.sqrt(-1)
+    } catch err: math.MathError {
+        io.println(&quot;math error occurred&quot;)
+    } catch err {
+        io.println(&quot;error occurred, we don't care what kind&quot;)
+    }
+
+    // Error declaration
+    error MathError(msg: string) {
+        message: msg, // optional, defaults to &quot;something went wrong&quot;
+        code: 1 // optional, defaults to 1 
+    }
+
+    // Error throwing
+    fun sqrt(x: float): float {
+        if x &lt; 0 {
+            yeet math.MathError(&quot;x must be positive&quot;)
+        }
+        return math.sqrt(x)
+    } // yes you read that right, it's called yeet
+
+    // Pointers
+    let x = 5
+    let y = &amp;x
+    let z = *y
+}
+
+
+// Functions
+fun add(x: int, y: int): int {
+    return x + y
+}
+
+// Structs
+struct Point {
+    x: int,
+    y: int
+}
+
+// Enums
+enum Color {
+    Red,
+    Green = 10,
+    Blue = 100,
+}
+
+// Traits
+trait Drawable {
+    fun draw()
+}
+
+// Methods
+impl Point {
+    constructor(x: int, y: int) {
+        self.x = x
+        self.y = y
+    }
+    fun draw(&amp;self) {
+        io.println(&quot;Drawing point at&quot;)
+    }
+}
+
+// Generics
+fun add&lt;T(Math.Arithmetics)&gt;(x: T, y: T): T {
+    return x + y
+}
+
+// Implementing traits for types
+impl Point trait math.Arithmetics {
+    fun add(&amp;self, other: &amp;Point): Point {
+        return Point(self.x + other.x, self.y + other.y)
+    }
+    /*
+    In this case you would need to finish the implementation of the trait by implementing the other methods of the trait.
+    */
+}
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../projects/number-guessing-game/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../projects/number-guessing-game/" class="btn btn-xs btn-link">
+        1. Number Guessing Game
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../operators/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../operators/" class="btn btn-xs btn-link">
+        Operators
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

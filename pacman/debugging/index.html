@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>13. Modules - Ruda</title>
+    <title>Debugging - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -32,11 +32,9 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Modules", url: "#_top", children: [
-              {title: "What is a module?", url: "#what-is-a-module" },
-              {title: "Creating a module", url: "#creating-a-module" },
-              {title: "Importing a module", url: "#importing-a-module" },
-              {title: "Aliasing a module", url: "#aliasing-a-module" },
+          {title: "Debugging", url: "#_top", children: [
+              {title: "Locate", url: "#locate" },
+              {title: "Restore", url: "#restore" },
           ]},
         ];
 
@@ -63,20 +61,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../packages/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        14. Error Handling
+      <a href="../packages/" class="btn btn-xs btn-link">
+        Packages
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../building/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../building/" class="btn btn-xs btn-link">
+        Building
       </a>
     </div>
     
@@ -84,43 +82,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="modules">Modules</h1>
-<p>This will be a short tutorial on how modularity works in Ruda.</p>
-<h2 id="what-is-a-module">What is a module?</h2>
-<p>A module is a file that contains code. Modules can be imported into other modules. This allows you to use the code from one module in another module.</p>
-<h2 id="creating-a-module">Creating a module</h2>
-<p>To create a module, you need to create a file with the <code>.rd</code> extension. This is the extension used for Ruda modules.</p>
+    <h1 id="debugging">Debugging</h1>
+<h2 id="locate">Locate</h2>
+<p>If you think there is a problem with the source of included libraries, you can locate them by running <code>ruda locate &lt;name&gt;</code> or <code>ruda locate &lt;git_url&gt;</code>.</p>
+<p>This will print the path to the source code of the library.</p>
 <p>Example:</p>
-<pre><code class="language-ruda">// file: math.rd
-
-fun add(x: int, y: int): int {
-    return x + y
-}
-
-const PI = 3.14
+<pre><code class="language-toml">// Ruda.toml
+[dependencies]
+algebra = &quot;https://git/repository/algebra.git&quot;
 </code></pre>
-<p>This creates a module named <code>math</code> that contains a function named <code>add</code> and a constant named <code>PI</code>.</p>
-<h2 id="importing-a-module">Importing a module</h2>
-<p>To import a module, you need to use the <code>import</code> keyword, followed by the name of the module.</p>
-<p>Example:</p>
-<pre><code class="language-ruda">import &quot;math&quot;
-
-fun main() {
-    let result = math.add(1, 2)
-    io.println(result) // 3
-}
+<pre><code>ruda locate algebra
 </code></pre>
-<p>This imports the <code>math</code> module and uses the <code>add</code> function from it.</p>
-<h2 id="aliasing-a-module">Aliasing a module</h2>
-<p>You can also alias a module using the <code>as</code> keyword.</p>
-<p>Example:</p>
-<pre><code class="language-ruda">import &quot;math&quot; as m
-
-fun main() {
-    let result = m.add(1, 2)
-    io.println(result) // 3
-}
+<p>Output:</p>
+<pre><code>/path/to/ruda/packages/author/algebra
 </code></pre>
+<p>Then you can open the source code in your editor and debug it.</p>
+<h3 id="no-args">No args</h3>
+<p>If you run <code>ruda locate</code> without any arguments, it will print the path to the <code>Ruda</code> directory.</p>
+<p>To get path to the Ruda packages directory, run <code>ruda locate</code> and append <code>/packages</code> to the path.</p>
+<h2 id="restore">Restore</h2>
+<p>If you think there is a problem with the compiler artifacts, you can restore them by running <code>ruda restore</code>.</p>
+<p>This will remove the <code>target</code> directory.</p>
+<h3 id="options">Options</h3>
+<ul>
+<li><code>--help</code>: Prints help information.</li>
+<li><code>--profile &lt;profile&gt;</code>: Sets the profile of the build. Can be any of the specified profiles in the <code>Ruda.toml</code> file.</li>
+<li><code>--compile</code>: Compiles the project after restoring the artifacts.</li>
+<li><code>--run</code>: Runs the project after restoring the artifacts.</li>
+</ul>
+<blockquote>
+<p>Also feel free to report any issues you find with the compiler or standard library on the <a href="https://github.com/it-2001/Ruda/issues">GitHub repository</a></p>
+</blockquote>
 
   <br>
     
@@ -133,20 +125,20 @@ fun main() {
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../packages/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        14. Error Handling
+      <a href="../packages/" class="btn btn-xs btn-link">
+        Packages
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../methods/" class="btn btn-xs btn-default pull-left">
+      <a href="../building/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../methods/" class="btn btn-xs btn-link">
-        12. Methods
+        Previous</a><a href="../building/" class="btn btn-xs btn-link">
+        Building
       </a>
     </div>
     

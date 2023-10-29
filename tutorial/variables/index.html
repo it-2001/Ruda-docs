@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/variables/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>2. Variables - Ruda docs</title>
+    <title>2. Variables - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -69,9 +69,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../hello-world/" class="btn btn-xs btn-default pull-left">
+      <a href="../hello/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../hello-world/" class="btn btn-xs btn-link">
+        Previous</a><a href="../hello/" class="btn btn-xs btn-link">
         1. Hello World
       </a>
     </div>
@@ -82,29 +82,26 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="variables">Variables</h1>
 <p>Variables are used to store values. Those values can be used or modified later in the program. Variables can be declared using the <code>let</code> keyword.</p>
-<pre><code class="language-Ruda">let x = 5
+<pre><code class="language-ruda">let x = 5
 </code></pre>
 <p>This declares a variable named <code>x</code> and assigns it the value <code>5</code>.</p>
 <p>To declare a variable without assigning it a value, you can use the <code>let</code> keyword without an expression.</p>
-<pre><code class="language-Ruda">let x
+<pre><code class="language-ruda">let x
 </code></pre>
 <p>This declares a variable named <code>x</code> without assigning it a value.</p>
-<p>If you want to assign a value to a variable later in the program, you can use the <code>=</code> operator.</p>
-<pre><code class="language-Ruda">x = 5
+<p>Variables can be assigned a new value using the <code>=</code> operator.</p>
+<pre><code class="language-ruda">let x = 5
+x = 10
 </code></pre>
-<p>This assigns the value <code>5</code> to the variable <code>x</code>.</p>
-<p>Knowing this, we can now modify the "Hello world" program to use a variable.</p>
-<pre><code class="language-Ruda">import &quot;std.io&quot;
+<p>Knowing this, we can rewrite our hello world program to use a variable.</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
 
 fun main() {
     let message = &quot;Hello world&quot;
     io.println(message)
 }
 </code></pre>
-<p>This program declares a variable named <code>message</code> and assigns it the value <code>"Hello world"</code>. It then prints the value of the variable to the console.</p>
-<p>Output:</p>
-<pre><code class="language-bash">Hello world
-</code></pre>
+<p>This program will print <code>Hello world</code> to the console.</p>
 
   <br>
     
@@ -127,9 +124,9 @@ fun main() {
     </div>
     
     <div class="wm-article-nav">
-      <a href="../hello-world/" class="btn btn-xs btn-default pull-left">
+      <a href="../hello/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../hello-world/" class="btn btn-xs btn-link">
+        Previous</a><a href="../hello/" class="btn btn-xs btn-link">
         1. Hello World
       </a>
     </div>

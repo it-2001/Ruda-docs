@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/control-flow/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>5. Control Flow - Ruda docs</title>
+    <title>5. Control Flow - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -32,10 +32,15 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Control Flow", url: "#_top", children: [
-              {title: "Conditional Statements", url: "#conditional-statements" },
-              {title: "Switch Statements", url: "#switch-statements" },
-              {title: "Loops", url: "#loops" },
+          {title: "Control flow", url: "#_top", children: [
+              {title: "Conditional statements", url: "#conditional-statements" },
+          ]},
+          {title: "Switch statements", url: "#switch-statements", children: [
+          ]},
+          {title: "Loops", url: "#loops", children: [
+              {title: "Loop", url: "#loop" },
+              {title: "While", url: "#while" },
+              {title: "For", url: "#for" },
               {title: "Break", url: "#break" },
               {title: "Continue", url: "#continue" },
           ]},
@@ -85,212 +90,116 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="control-flow">Control Flow</h1>
+    <h1 id="control-flow">Control flow</h1>
 <p>Control flow lets you control the order in which your code is executed. It allows you to add logic to your programs.</p>
-<h2 id="conditional-statements">Conditional Statements</h2>
+<h2 id="conditional-statements">Conditional statements</h2>
 <p>Conditional statements are used to execute certain code only if a certain condition is met.</p>
-<pre><code class="language-Ruda">if x {
-    // code to execute if condition is true
+<pre><code class="language-ruda">if true {
+    io.println(&quot;This will be printed&quot;)
 }
-</code></pre>
-<p>Here <code>x</code> is the condition. If <code>x</code> is <code>true</code>, the code inside the curly braces is executed. If <code>x</code> is <code>false</code>, the code is skipped.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 5
 
-if x == 5 {
-    io.println(&quot;x is 5&quot;)
+if false {
+    io.println(&quot;This will not be printed&quot;)
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">x is 5
-</code></pre>
-<p>Here we check if the value of <code>x</code> is <code>5</code>. Since it is, the code inside the curly braces is executed.</p>
+<p>This will print <code>This will be printed</code> to the console.</p>
 <h3 id="else">Else</h3>
-<p>You can use the <code>else</code> keyword to execute code if the condition is <code>false</code>.</p>
-<pre><code class="language-Ruda">if x {
-    // code to execute if condition is true
+<p>You can use the <code>else</code> keyword to execute code if the condition is not met.</p>
+<pre><code class="language-ruda">if false {
+    io.println(&quot;This will not be printed&quot;)
 } else {
-    // code to execute if condition is false
+    io.println(&quot;This will be printed&quot;)
 }
 </code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 5
-
-if x == 5 {
-    io.println(&quot;x is 5&quot;)
+<p>This will print <code>This will be printed</code> to the console.</p>
+<h3 id="else-if">Else if</h3>
+<p>You can use the <code>else if</code> keyword to execute code if the condition is not met and another condition is met.</p>
+<pre><code class="language-ruda">if false {
+    io.println(&quot;This will not be printed&quot;)
+} else if true {
+    io.println(&quot;This will be printed&quot;)
 } else {
-    io.println(&quot;x is not 5&quot;)
+    io.println(&quot;This will not be printed&quot;)
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">x is 5
-</code></pre>
-<p>Here we check if the value of <code>x</code> is <code>5</code>. Since it is, the code inside the first curly braces is executed. The code inside the second curly braces is skipped.</p>
-<p>If we change the value of <code>x</code> to <code>6</code>, the code inside the first curly braces is skipped and the code inside the second curly braces is executed.</p>
-<pre><code class="language-Ruda">let x = 6
-
-if x == 5 {
-    io.println(&quot;x is 5&quot;)
-} else {
-    io.println(&quot;x is not 5&quot;)
-}
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">x is not 5
-</code></pre>
-<h3 id="else-if">Else If</h3>
-<p>You can use the <code>else if</code> keyword to check multiple conditions.</p>
-<pre><code class="language-Ruda">if x {
-    // code to execute if condition is true
-} else if y {
-    // code to execute if condition is true
-} else {
-    // code to execute if all conditions are false
-}
-</code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 6
-
-if x == 5 {
-    io.println(&quot;x is 5&quot;)
-} else if x == 6 {
-    io.println(&quot;x is 6&quot;)
-} else {
-    io.println(&quot;x is not 5 or 6&quot;)
-}
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">x is 6
-</code></pre>
-<p>Here we check if the value of <code>x</code> is <code>5</code>. Since it is not, we check if the value of <code>x</code> is <code>6</code>. Since it is, the code inside the second curly braces is executed. The code inside the first and third curly braces is skipped.</p>
-<p>If we change the value of <code>x</code> to <code>7</code>, the code inside the first and second curly braces is skipped and the code inside the third curly braces is executed.</p>
-<h2 id="switch-statements">Switch Statements</h2>
-<p>Switch statements are used to execute certain code based on the value of a variable.</p>
-<pre><code class="language-Ruda">switch x {
-    y {
-        // code to execute if x == y
-    }
-    z {
-        // code to execute if x == z
-    }
-    _ {
-        // code to execute if neither case is true
-    }
-}
-</code></pre>
-<p>Here <code>x</code> is the variable to check. If <code>x</code> is equal to <code>y</code>, the code inside the first curly braces is executed. If <code>x</code> is equal to <code>z</code>, the code inside the second curly braces is executed. If <code>x</code> is not equal to either <code>y</code> or <code>z</code>, the code inside the third curly braces is executed.</p>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 6
+<p>This will print <code>This will be printed</code> to the console.</p>
+<p>After one of the conditions is met, the rest of the conditions are not checked.</p>
+<h1 id="switch-statements">Switch statements</h1>
+<p>Switch statements are used to execute different code depending on the value of a variable.</p>
+<pre><code class="language-ruda">let x = 5
 
 switch x {
+    0 {
+        io.println(&quot;x is 0&quot;)
+    },
+    1 {
+        io.println(&quot;x is 1&quot;)
+    },
     5 {
         io.println(&quot;x is 5&quot;)
-    }
-    6 {
-        io.println(&quot;x is 6&quot;)
-    }
+    },
     _ {
-        io.println(&quot;x is not 5 or 6&quot;)
+        io.println(&quot;x is not 0, 1 or 5&quot;)
     }
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">x is 6
-</code></pre>
-<h2 id="loops">Loops</h2>
+<p>This will print <code>x is 5</code> to the console.</p>
+<p>The <code>_</code> case is the default case. It is executed if none of the other cases are executed.</p>
+<h1 id="loops">Loops</h1>
 <p>Loops are used to execute code multiple times.</p>
-<h3 id="loop">Loop</h3>
-<p>The <code>loop</code> loop executes a block of code forever.</p>
-<pre><code class="language-Ruda">loop {
-    // code to execute forever
+<h2 id="loop">Loop</h2>
+<p>The <code>loop</code> keyword is used to create an infinite loop.</p>
+<pre><code class="language-ruda">loop {
+    io.println(&quot;This will be printed forever&quot;)
 }
 </code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">loop {
-    io.println(&quot;Hello world&quot;)
-}
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">Hello world
-Hello world
-Hello world
-Hello world
-(etc.)
-</code></pre>
-<h3 id="while">While</h3>
-<p>The <code>while</code> loop executes a block of code while a condition is <code>true</code>.</p>
-<pre><code class="language-Ruda">while x {
-    // code to execute while condition is true
-}
-</code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 0
+<p>This will print <code>This will be printed forever</code> to the console forever.</p>
+<h2 id="while">While</h2>
+<p>The <code>while</code> keyword is used to create a loop that executes while a certain condition is met.</p>
+<pre><code class="language-ruda">let x = 0
 
 while x &lt; 5 {
     io.println(x)
-    x = x + 1
+    x += 1
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">0
-1
-2
-3
-4
-</code></pre>
-<h3 id="for">For</h3>
-<p>The <code>for</code> loop unitizes Ruda's iterators to execute a block of code for each item in an iterator.</p>
-<pre><code class="language-Ruda">for x in y {
-    // code to execute for each item in y
+<p>This will print <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code> to the console.</p>
+<h2 id="for">For</h2>
+<p>The <code>for</code> keyword is used to create a loop that executes for each item in a collection.</p>
+<pre><code class="language-ruda">let numbers = [1, 2, 3, 4, 5]
+
+for number in numbers {
+    io.println(number)
 }
 </code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">for character in &quot;Hello&quot; {
-    io.println(x)
-}
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">H
-e
-l
-l
-o
-</code></pre>
+<p>This will print <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> and <code>5</code> to the console.</p>
 <h2 id="break">Break</h2>
 <p>The <code>break</code> keyword is used to exit a loop.</p>
-<pre><code class="language-Ruda">loop {
-    // code to execute forever
-    break
-}
-</code></pre>
-<p>Example:</p>
-<pre><code class="language-Ruda">let x = 0
+<pre><code class="language-ruda">let x = 0
 
 while true {
     io.println(x)
-    x = x + 1
+    x += 1
 
-    // exit loop when x is 5
     if x == 5 {
         break
     }
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">0
-1
-2
-3
-4
-</code></pre>
-<p>Here we use the <code>break</code> keyword to exit the loop when <code>x</code> is <code>5</code>.</p>
+<p>This will print <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code> to the console.</p>
 <h2 id="continue">Continue</h2>
-<p>The <code>continue</code> keyword is used to skip the rest of the code in a loop and continue to the next iteration.</p>
-<pre><code class="language-Ruda">loop {
-    // code to execute forever
-    continue
+<p>The <code>continue</code> keyword is used to skip the rest of the loop and continue to the next iteration.</p>
+<pre><code class="language-ruda">let numbers = [1, 2, 3, 4, 5]
+
+for number in numbers {
+    if number == 3 {
+        continue
+    }
+
+    io.println(number)
 }
 </code></pre>
+<p>This will print <code>1</code>, <code>2</code>, <code>4</code> and <code>5</code> to the console.</p>
 
   <br>
     

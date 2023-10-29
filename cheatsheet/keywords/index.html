@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/cheatsheet/keywords/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Keywords - Ruda docs</title>
+    <title>Keywords - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -38,9 +38,9 @@
               {title: "Loops", url: "#loops" },
               {title: "Functions", url: "#functions" },
               {title: "Comments", url: "#comments" },
-              {title: "Non primitive types", url: "#non-primitive-types" },
-              {title: "Memory management", url: "#memory-management" },
-              {title: "Error handling", url: "#error-handling" },
+              {title: "Non Primitive Types", url: "#non-primitive-types" },
+              {title: "Memory Management", url: "#memory-management" },
+              {title: "Error Handling", url: "#error-handling" },
           ]},
         ];
 
@@ -67,20 +67,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../basic/" class="btn btn-xs btn-default pull-right">
+      <a href="../operators/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../basic/" class="btn btn-xs btn-link">
-        Basic Syntax
+      <a href="../operators/" class="btn btn-xs btn-link">
+        Operators
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../tutorial/memory-management/" class="btn btn-xs btn-default pull-left">
+      <a href="../../tutorial/advanced/memory/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../tutorial/memory-management/" class="btn btn-xs btn-link">
-        18. Memory Management
+        Previous</a><a href="../../tutorial/advanced/memory/" class="btn btn-xs btn-link">
+        4. Memory Management
       </a>
     </div>
     
@@ -89,35 +89,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="keywords">Keywords</h1>
-<p>Ruda has a small number of keywords. They are listed below.</p>
+<p>Here is a list of all the keywords in the language.</p>
 <h2 id="variable-declaration">Variable declaration</h2>
 <table>
 <thead>
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>let</code></td>
-<td>Declares a variable.</td>
-<td><code>let x = 5</code> or <code>let x: int = 5</code></td>
-<td><a href="../../tutorial/variables">Variables</a></td>
+<td>Declares a variable</td>
+<td><code>let x = 10</code></td>
+<td><a href="/tutorial/variables">Variables</a></td>
 </tr>
 <tr>
 <td><code>const</code></td>
-<td>Declares a constant.</td>
-<td><code>const x: int = 5</code></td>
-<td><a href="../../tutorial/constants">Constants</a></td>
+<td>Declares a constant</td>
+<td><code>const x = 10</code></td>
+<td><a href="/tutorial/constants">Constants</a></td>
 </tr>
 <tr>
 <td><code>type</code></td>
-<td>Declares a type alias.</td>
-<td><code>type MyInt = int</code></td>
-<td><a href="../../tutorial/data-types/#type-aliases">Type aliases</a></td>
+<td>Declares a type alias</td>
+<td><code>type Foo = int</code></td>
+<td><a href="/tutorial/data-types/#type-aliases">Type Aliases</a></td>
 </tr>
 </tbody>
 </table>
@@ -127,7 +127,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
@@ -135,26 +135,26 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <td><code>if</code></td>
 <td>Executes a block of code if a condition is true.</td>
-<td><code>if x == 5 { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#if">If</a></td>
+<td><code>if x == 10 { ... }</code></td>
+<td><a href="/tutorial/control-flow">If Statements</a></td>
 </tr>
 <tr>
 <td><code>else</code></td>
 <td>Executes a block of code if a condition is false.</td>
-<td><code>if x == 5 { ... } else { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#else">Else</a></td>
+<td><code>if x == 10 { ... } else { ... }</code></td>
+<td><a href="/tutorial/control-flow/#else">Else Statements</a></td>
 </tr>
 <tr>
 <td><code>else if</code></td>
 <td>Executes a block of code if a condition is false and another condition is true.</td>
-<td><code>if x == 5 { ... } else if x == 6 { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#else-if">Else if</a></td>
+<td><code>if x == 10 { ... } else if x == 20 { ... }</code></td>
+<td><a href="/tutorial/control-flow/#else-if">Else If Statements</a></td>
 </tr>
 <tr>
 <td><code>switch</code></td>
-<td>Executes a block of code depending on the value of a variable.</td>
-<td><code>switch x { 1 { ... }, _ { ... } }</code></td>
-<td><a href="../../tutorial/control-flow/#switch-statements">Switch</a></td>
+<td>Executes a block of code based on the value of an expression.</td>
+<td><code>switch x { ... }</code></td>
+<td><a href="/tutorial/control-flow/#switch-statements">Switch Statements</a></td>
 </tr>
 </tbody>
 </table>
@@ -164,7 +164,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
@@ -172,32 +172,32 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <td><code>while</code></td>
 <td>Executes a block of code while a condition is true.</td>
-<td><code>while x &lt; 5 { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#while">While</a></td>
+<td><code>while x &lt; 10 { ... }</code></td>
+<td><a href="/tutorial/control-flow/#while">While Loops</a></td>
 </tr>
 <tr>
 <td><code>for</code></td>
-<td>Executes a block of code using an iterator.</td>
-<td><code>for x in [0, 1, 2, 3, 4, 5] { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#for">For</a></td>
+<td>Executes a block of code for each element in a collection.</td>
+<td><code>for x in [1,2,3] { ... }</code></td>
+<td><a href="/tutorial/control-flow/#for">For Loops</a></td>
 </tr>
 <tr>
 <td><code>loop</code></td>
-<td>Executes a block of code indefinitely.</td>
+<td>Executes a block of code forever.</td>
 <td><code>loop { ... }</code></td>
-<td><a href="../../tutorial/control-flow/#loop">Loop</a></td>
+<td><a href="/tutorial/control-flow/#loop">Loop Statements</a></td>
 </tr>
 <tr>
 <td><code>break</code></td>
 <td>Breaks out of a loop.</td>
 <td><code>break</code></td>
-<td><a href="../../tutorial/control-flow/#break">Break</a></td>
+<td><a href="/tutorial/control-flow/#break">Break Statements</a></td>
 </tr>
 <tr>
 <td><code>continue</code></td>
 <td>Skips the rest of the current iteration of a loop.</td>
 <td><code>continue</code></td>
-<td><a href="../../tutorial/control-flow/#continue">Continue</a></td>
+<td><a href="/tutorial/control-flow/#continue">Continue Statements</a></td>
 </tr>
 </tbody>
 </table>
@@ -207,7 +207,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
@@ -215,20 +215,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <td><code>fun</code></td>
 <td>Declares a function.</td>
-<td><code>fun add(x: int, y: int) int { ... }</code></td>
-<td><a href="../../tutorial/functions">Functions</a></td>
+<td><code>fun foo() { ... }</code></td>
+<td><a href="/tutorial/functions">Functions</a></td>
 </tr>
 <tr>
 <td><code>return</code></td>
 <td>Returns a value from a function.</td>
-<td><code>return 5</code></td>
-<td><a href="../../tutorial/functions/#return-values">Return</a></td>
+<td><code>return 10</code></td>
+<td><a href="/tutorial/functions/#return-values">Return Statements</a></td>
 </tr>
 <tr>
 <td><code>overload</code></td>
-<td>Declares an operator overload.</td>
-<td><code>overload + (x: int, y: int) int { ... }</code></td>
-<td><a href="../../tutorial/overloads">Operator overloading</a></td>
+<td>Declares a function that overloads an operator.</td>
+<td><code>overload + (other: Foo): Foo { ... }</code></td>
+<td><a href="/tutorial/advanced/overloads">Operator Overloading</a></td>
 </tr>
 </tbody>
 </table>
@@ -238,32 +238,32 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>//</code></td>
-<td>Single-line comment.</td>
-<td><code>// This is a comment</code></td>
-<td><a href="../../tutorial/comments">Comments</a></td>
+<td>Single line comment</td>
+<td><code>// this is a comment</code></td>
+<td><a href="/tutorial/comments">Comments</a></td>
 </tr>
 <tr>
 <td><code>/* */</code></td>
-<td>Multi-line comment.</td>
-<td><code>/* This is a comment */</code></td>
-<td><a href="../../tutorial/comments">Comments</a></td>
+<td>Multi line comment</td>
+<td><code>/* this is a comment */</code></td>
+<td><a href="/tutorial/comments">Comments</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="non-primitive-types">Non primitive types</h2>
+<h2 id="non-primitive-types">Non Primitive Types</h2>
 <table>
 <thead>
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
@@ -271,42 +271,42 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <td><code>struct</code></td>
 <td>Declares a struct.</td>
-<td><code>struct Point { x: int, y: int }</code></td>
-<td><a href="../../tutorial/structs">Structs</a></td>
+<td><code>struct Foo { a: int }</code></td>
+<td><a href="/tutorial/structs">Structs</a></td>
 </tr>
 <tr>
 <td><code>enum</code></td>
 <td>Declares an enum.</td>
-<td><code>enum Color { Red, Green, Blue }</code></td>
-<td><a href="../../tutorial/enums">Enums</a></td>
+<td><code>enum Foo { Right, Left }</code></td>
+<td><a href="/tutorial/enums">Enums</a></td>
 </tr>
 <tr>
 <td><code>impl</code></td>
-<td>Declares an implementation block.</td>
-<td><code>impl Point { ... }</code></td>
-<td><a href="../../tutorial/methods">Implementations</a></td>
+<td>Implements methods or traits for a type.</td>
+<td><code>impl Foo { fun foo() { ... } }</code></td>
+<td><a href="/tutorial/methods">Methods</a></td>
 </tr>
 <tr>
 <td><code>trait</code></td>
 <td>Declares a trait.</td>
-<td><code>trait Drawable { ... }</code></td>
-<td><a href="../../tutorial/traits">Traits</a></td>
+<td><code>trait Foo { fun foo() }</code></td>
+<td><a href="/tutorial/advanced/traits">Traits</a></td>
 </tr>
 <tr>
 <td><code>import</code></td>
 <td>Imports a module.</td>
 <td><code>import "std.io"</code></td>
-<td><a href="../../tutorial/modules">Modules</a></td>
+<td><a href="/tutorial/modules">Modules</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="memory-management">Memory management</h2>
+<h2 id="memory-management">Memory Management</h2>
 <table>
 <thead>
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
@@ -314,63 +314,63 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <tr>
 <td><code>new</code></td>
 <td>Allocates memory on the heap.</td>
-<td><code>new Point { x: 5, y: 5 }</code></td>
-<td><a href="../../tutorial/memory-management">Memory management</a></td>
+<td><code>let x = new 5</code></td>
+<td><a href="/tutorial/advanced/memory">Memory Management</a></td>
 </tr>
 <tr>
 <td><code>as</code></td>
 <td>Casts a value to a different type.</td>
-<td><code>x as float</code></td>
-<td><a href="../../tutorial/data-types/#type-casting">Casting</a></td>
+<td><code>let x = 5 as float</code></td>
+<td><a href="/tutorial/data-types/#type-casting">Casting</a></td>
 </tr>
 <tr>
 <td><code>?</code></td>
-<td>Optional operator. Checks if value is not null.</td>
-<td><code>if maybeValue? { ... }</code></td>
-<td><a href="../../tutorial/data-types/#optional-types">Optional operator</a></td>
+<td>Checks if a value is null.</td>
+<td><code>if x? { ... }</code></td>
+<td><a href="/tutorial/data-types/#optionals">Optionals</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="error-handling">Error handling</h2>
+<h2 id="error-handling">Error Handling</h2>
 <table>
 <thead>
 <tr>
 <th>Keyword</th>
 <th>Description</th>
-<th>example</th>
+<th>Example</th>
 <th>reference</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>try</code></td>
-<td>Executes a block of code that may fail.</td>
+<td>Executes a block of code that can throw an error.</td>
 <td><code>try { ... }</code></td>
-<td><a href="../../tutorial/error-handling">Try</a></td>
+<td><a href="/tutorial/error-handling">Error Handling</a></td>
 </tr>
 <tr>
 <td><code>catch</code></td>
-<td>Handles an error.</td>
-<td><code>catch { ... }</code></td>
-<td><a href="../../tutorial/error-handling/#catch-statements">Catch</a></td>
+<td>Handles an error that occured inside a try block.</td>
+<td><code>catch err { ... }</code></td>
+<td><a href="/tutorial/error-handling/#catch-statements">Catch</a></td>
 </tr>
 <tr>
 <td><code>yeet</code></td>
 <td>Throws an error.</td>
-<td><code>yeet Error("Something went wrong")</code></td>
-<td><a href="../../tutorial/error-handling/#yeet">Yeet</a></td>
+<td><code>yeet Error("error message")</code></td>
+<td><a href="/tutorial/error-handling/#yeet">Yeet</a></td>
 </tr>
 <tr>
 <td><code>error</code></td>
 <td>Declares an error type.</td>
-<td><code>error Error (msg: string) { message: msg, code: 1 }</code></td>
-<td><a href="../../tutorial/error-handling/#error-declarations">Error</a></td>
+<td><code>error MyError { ... }</code></td>
+<td><a href="/tutorial/error-handling/#error-declaration">Error Declaration</a></td>
 </tr>
 <tr>
 <td><code>!</code></td>
 <td>Bang operator.</td>
-<td><code>unsafeFunction()!</code></td>
-<td><a href="../../tutorial/error-handling/#bang-operator">Bang</a></td>
+<td><code>let x = foo()!</code></td>
+<td><a href="/tutorial/error-handling/#bang-operator">Bang</a></td>
 </tr>
 </tbody>
 </table>
@@ -386,20 +386,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../basic/" class="btn btn-xs btn-default pull-right">
+      <a href="../operators/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../basic/" class="btn btn-xs btn-link">
-        Basic Syntax
+      <a href="../operators/" class="btn btn-xs btn-link">
+        Operators
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../tutorial/memory-management/" class="btn btn-xs btn-default pull-left">
+      <a href="../../tutorial/advanced/memory/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../tutorial/memory-management/" class="btn btn-xs btn-link">
-        18. Memory Management
+        Previous</a><a href="../../tutorial/advanced/memory/" class="btn btn-xs btn-link">
+        4. Memory Management
       </a>
     </div>
     

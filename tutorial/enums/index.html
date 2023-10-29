@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/enums/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>10. Enums - Ruda docs</title>
+    <title>10. Enums - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,10 +33,14 @@
         
         var pageToc = [
           {title: "Enums", url: "#_top", children: [
-              {title: "Methods", url: "#methods" },
-              {title: "Variant matching", url: "#variant-matching" },
-              {title: "Variant values", url: "#variant-values" },
-              {title: "Constructors", url: "#constructors" },
+          ]},
+          {title: "Methods", url: "#methods", children: [
+          ]},
+          {title: "Variant Matching", url: "#variant-matching", children: [
+          ]},
+          {title: "Constructors", url: "#constructors", children: [
+              {title: "Enum Constructor", url: "#enum-constructor" },
+              {title: "Variant Constructor", url: "#variant-constructor" },
           ]},
         ];
 
@@ -85,109 +89,85 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="enums">Enums</h1>
-<p>Enums are a way to define a type that can have a finite number of values. For example, a boolean can only be <code>true</code> or <code>false</code>, so it can be represented as an enum:</p>
-<pre><code class="language-Ruda">enum bool {
-    true,
-    false,
+<p>Enums in Ruda are quite boring. They are used for defining a type that can have a finite number of numbers.</p>
+<pre><code class="language-ruda">enum Color {
+    Red,
+    Green,
+    Blue
 }
 </code></pre>
-<p>Enums can also have associated numbers:</p>
-<pre><code class="language-Ruda">enum Compass {
-    North = 1,
-    South = 10,
-    East = 100,
-    West = 1000,
+<p>You can also assign numbers to enum variants.</p>
+<pre><code class="language-ruda">enum Color {
+    Red, // 0
+    Green = 5, // 5
+    Blue // 6
 }
 </code></pre>
-<h2 id="methods">Methods</h2>
-<p>Similar to structs, enums can have methods:</p>
-<p>We will talk about methods in detail in the <a href="#methods">Methods</a> section.</p>
-<h2 id="variant-matching">Variant matching</h2>
-<p>Enum variants are treated as values, so you can match on them:</p>
-<pre><code class="language-Ruda">enum Compass {
-    North,
-    South,
-    East,
-    West,
+<h1 id="methods">Methods</h1>
+<p>Simmilar to structs, enums can also have methods.</p>
+<p>We will talk about methods in detail in the <a href="/docs/tutorial/methods.md">Methods</a> section.</p>
+<h1 id="variant-matching">Variant Matching</h1>
+<p>Variant matching is used to match the variant of an enum.</p>
+<pre><code class="language-ruda">enum Color {
+    Red,
+    Green,
+    Blue
 }
 
-let direction = Compass.North
+fun main() {
+    let myColor = Color.Red
 
-switch direction {
-    Compass.North {
-        io.println(&quot;North&quot;)
-    },
-    Compass.South {
-        io.println(&quot;South&quot;)
-    },
-    Compass.East {
-        io.println(&quot;East&quot;)
-    },
-    Compass.West {
-        io.println(&quot;West&quot;)
+    match myColor {
+        Color.Red =&gt; {
+            io.println(&quot;Red&quot;)
+        }
+        Color.Green =&gt; {
+            io.println(&quot;Green&quot;)
+        }
+        Color.Blue =&gt; {
+            io.println(&quot;Blue&quot;)
+        }
     }
 }
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">North
-</code></pre>
-<h2 id="variant-values">Variant values</h2>
-<p>Since enum variants can be associated with numbers, you can get the value of a variant:</p>
-<pre><code class="language-Ruda">enum Compass {
-    North = 1,
-    South = 10,
-    East = 100,
-    West = 1000,
+<h1 id="constructors">Constructors</h1>
+<p>Enums allow you to define constructors either for the enum itself or for each variant.</p>
+<h2 id="enum-constructor">Enum Constructor</h2>
+<pre><code class="language-ruda">enum Color {
+    Red,
+    Green,
+    Blue
 }
 
-let direction = Compass.North
-
-let value = direction as int
-
-io.println(value)
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">1
-</code></pre>
-<p>And by casting them to <code>string</code>, you can get their name:</p>
-<pre><code class="language-Ruda">enum Compass {
-    North = 1,
-    South = 10,
-    East = 100,
-    West = 1000,
-}
-
-let direction = Compass.North
-
-let name = direction as string
-
-io.println(name)
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">North
-</code></pre>
-<h2 id="constructors">Constructors</h2>
-<p>Enums also allow you to define constructors, but they are not as useful as struct constructors:</p>
-<pre><code class="language-Ruda">enum Compass {
-    North = 1,
-    South = 10,
-    East = 100,
-    West = 1000,
-}
-
-impl Compass {
-    constructor() {
-        self = Compass.North
+impl Color {
+    fun Color() {
+        io.println(&quot;Red is the default color&quot;)
+        self = Color.Red
     }
 }
-
-let direction = Compass()
-
-io.println(direction as string)
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">North
+<h2 id="variant-constructor">Variant Constructor</h2>
+<pre><code class="language-ruda">enum Color {
+    Red,
+    Green,
+    Blue
+}
+
+impl Color {
+    fun Red() {
+        io.println(&quot;i am set to red&quot;)
+    }
+    fun Green() {
+        io.println(&quot;i am set to green&quot;)
+    }
+    fun Blue()! {
+        // blue is not implemented yet, the function will yeet an error
+    }
+}
 </code></pre>
+<blockquote>
+<p>Note: Use this only if you really need to. It is not recommended to use constructors for enums. I don't even know why I added this feature tbh.</p>
+</blockquote>
 
   <br>
     

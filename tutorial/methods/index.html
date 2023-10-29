@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://example.com/tutorial/methods/">
+    
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>12. Methods - Ruda docs</title>
+    <title>12. Methods - Ruda</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,9 +33,11 @@
         
         var pageToc = [
           {title: "Methods", url: "#_top", children: [
+              {title: "Defining methods", url: "#defining-methods" },
+              {title: "Calling methods", url: "#calling-methods" },
               {title: "Self", url: "#self" },
               {title: "Static methods", url: "#static-methods" },
-              {title: "Static methods vs functions", url: "#static-methods-vs-functions" },
+              {title: "Static vs Instance methods", url: "#static-vs-instance-methods" },
           ]},
         ];
 
@@ -62,12 +64,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../modules/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        13. Error Handling
+      <a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
       </a>
     </div>
     
@@ -84,14 +86,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="methods">Methods</h1>
-<p>Methods are functions that are associated with a type. To implement a method, use the <code>impl</code> keyword followed by the type name, then the method name. The method body is enclosed in curly braces.</p>
-<pre><code class="language-Ruda">struct Person {
+<p>Methods are functions that are defined on a type. Thats all there is to it.</p>
+<h2 id="defining-methods">Defining methods</h2>
+<p>Methods are defined using the <code>impl</code> keyword.</p>
+<pre><code class="language-ruda">struct Person {
     name: string,
     age: int
 }
 
 impl Person {
-    constructor(name: string, age: int) {
+    fun Person(name: string, age: int) {
         self.name = name
         self.age = age
     }
@@ -101,48 +105,46 @@ impl Person {
     }
 }
 </code></pre>
-<p>We have already seen constructors. Constructors are special methods that are called when a struct is created. Constructors are used to initialize the struct fields.</p>
+<p>Here we first define a struct named <code>Person</code> with two fields <code>name</code> and <code>age</code>.</p>
+<p>Then we define a constructor for the <code>Person</code> struct, this is the same constructor we defined in the <a href="/tutorial/structs">Structs</a> section.</p>
+<p>Then we define a method named <code>greet</code> that prints a greeting message.</p>
+<p>The method takes a <code>self</code> parameter. This is a special parameter that refers to the struct instance. We use <code>self</code> to access the struct fields.</p>
+<h2 id="calling-methods">Calling methods</h2>
 <p>Methods are called using the dot operator.</p>
-<pre><code class="language-Ruda">let person = Person(&quot;John&quot;, 20)
+<pre><code class="language-ruda">let person = Person(&quot;Terry&quot;, 34)
 
-person.greet()
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">Hello, my name is John
+person.greet() // Hello, my name is Terry
 </code></pre>
 <h2 id="self">Self</h2>
 <p>Self is a special variable that refers to the struct instance. We use self to access the struct fields.</p>
 <h2 id="static-methods">Static methods</h2>
-<p>If you do not have self as a parameter, compiler will treat the method as a static method. Static methods are methods that are not associated with a struct instance. Static methods are called using the type name.</p>
-<pre><code class="language-Ruda">struct Person {
+<p>Static methods are methods that are defined on the type itself. They are called using the type name.</p>
+<pre><code class="language-ruda">struct Person {
     name: string,
     age: int
 }
 
 impl Person {
-    constructor(name: string, age: int) {
+    fun Person(name: string, age: int) {
         self.name = name
         self.age = age
     }
 
-    fun average_age(): float {
-        // some magic to calculate average age of all people
-        // ...
+    fun greet(self) {
+        io.println(&quot;Hello, my name is &quot; + self.name)
+    }
 
-        return average_age
+    fun create(name: string, age: int): Person {
+        return Person(name, age)
     }
 }
 
-let person1 = Person(&quot;John&quot;, 20)
-
-let person2 = Person(&quot;Jane&quot;, 30)
-
-let average_age = Person.average_age()
+let person = Person.create(&quot;Terry&quot;, 34)
 </code></pre>
-<p>Here we have a static method named <code>average_age</code>. This method calculates the average age of all people. We can call this method using the type name.</p>
-<p>We want it to be a static method because it is not associated with a struct instance. It is associated with the struct itself.</p>
-<h2 id="static-methods-vs-functions">Static methods vs functions</h2>
-<p>Static methods are similar to functions. The only difference is that static methods are associated with a type.</p>
+<p>Here we define a static method named <code>create</code> that creates a new <code>Person</code> struct.</p>
+<h2 id="static-vs-instance-methods">Static vs Instance methods</h2>
+<p>Static methods are called using the type name while instance methods are called using the struct instance.</p>
+<p>Static methods are useful for creating alternative constructors.</p>
 
   <br>
     
@@ -155,12 +157,12 @@ let average_age = Person.average_age()
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../error-handling/" class="btn btn-xs btn-default pull-right">
+      <a href="../modules/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../error-handling/" class="btn btn-xs btn-link">
-        13. Error Handling
+      <a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
       </a>
     </div>
     
