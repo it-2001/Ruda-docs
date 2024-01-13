@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Starting - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Starting", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h1 id="starting">Starting</h1>
+<p>Ruda source code has a template for creating extensions, so we will use it</p>
+<blockquote>
+<p>Extension system will most likely have some small changes before full release. Keep that in mind.</p>
+</blockquote>
+<p>Got to <a href="https://github.com/it-2001/Ruda">Ruda</a> and clone the repository. We will need the source code to compile the extension. (this will be simplified later).</p>
+<p>Copy <code>stdlib/base/</code> to the same directory and rename it to <code>test</code>. This is the root of your project.</p>
+<p>Before starting, go to <code>Cargo.toml</code> and change the name of your project to <code>test</code>. This will give you this:</p>
+<pre><code class="language-toml">[package]
+name = &quot;test&quot;
+version = &quot;0.1.0&quot;
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+runtime = {path = &quot;../../vm/runtime&quot;}
+
+[lib]
+path = &quot;lib.rs&quot;
+crate-type = [&quot;cdylib&quot;]
+
+
+[profile.dev]
+opt-level = 3
+debug = false
+</code></pre>
+<p>If everything works, you should be able to compile test using <code>cargo build --release</code>. This will output your extension to <code>target/release/test.dll</code> (<code>libtest.so</code> on Linux).</p>
+<p>Take the extension file and place it to some Ruda project root directory. Open <code>Ruda.toml</code> file and add:</p>
+<pre><code class="language-toml">[binaries]
+test = &quot;test.dll&quot;
+</code></pre>
+<p>Compile the project <code>ruda run</code>. This should run.</p>
+
+  <br>
+    
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

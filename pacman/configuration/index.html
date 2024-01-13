@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Configuration - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Configuring Ruda Project", url: "#_top", children: [
+              {title: "Dependencies", url: "#dependencies" },
+              {title: "Profiles", url: "#profiles" },
+              {title: "Global Configuration", url: "#global-configuration" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../packages/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../packages/" class="btn btn-xs btn-link">
+        Packages
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="configuring-ruda-project">Configuring Ruda Project</h1>
+<p>The <code>Ruda.toml</code> file is the configuration file for Ruda projects. It contains information about the project, such as the name, version, dependencies, etc.</p>
+<p>When you create new project using <code>ruda init</code>, it will create a <code>Ruda.toml</code> file with the following content:</p>
+<pre><code class="language-toml">author = &quot;author&quot;
+license = &quot;MIT&quot;
+name = &quot;project&quot;
+runtime = &quot;latest&quot;
+version = &quot;0.1.0&quot;
+kind = &quot;bin&quot;
+description = &quot;description&quot;
+3rdparty = &quot;allow&quot;
+</code></pre>
+<p>Some of the fields are self-explanatory, but some of them are not. So let's go over the confusing ones.</p>
+<ul>
+<li><code>runtime</code>: The version of the Ruda runtime to use. Can be <code>latest</code> or <code>x.x.x</code>.</li>
+<li><code>kind</code>: The kind of the project. Can be <code>bin</code> or <code>lib</code>.</li>
+<li><code>3rdparty</code>: Whether to allow 3rd party dependencies. Can be:<ul>
+<li><code>allow</code>: Allow 3rd party dependencies.</li>
+<li><code>std</code>: Allow only dependencies from the standard library.</li>
+<li><code>sandboxed</code>: Allow only dependencies from the standard library that are considered safe.</li>
+<li><code>deny</code>: Deny any dependencies, including the standard library.</li>
+</ul>
+</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<p>Dependencies are specified in the <code>[dependencies]</code> section of the <code>Ruda.toml</code> file.</p>
+<pre><code class="language-toml">[dependencies]
+algebra = &quot;https://git/repository/algebra.git&quot;
+</code></pre>
+<p>The name of the dependency is the name of the package. The value is the URL to the Git repository of the package.</p>
+<p>You can also specify additional options for the dependency:</p>
+<pre><code class="language-toml">[dependencies]
+algebra = { path = &quot;./algebra&quot;, version = &quot;0.1.0&quot;, profile = &quot;default&quot;, 3rdparty = &quot;allow&quot; }
+</code></pre>
+<ul>
+<li><code>path</code>: The path to the package. Can be a local path or a URL to a Git repository.</li>
+<li><code>version</code>: The version of the package to use. Can be <code>latest</code> or <code>x.x.x</code>.</li>
+<li><code>profile</code>: The profile of the package to use. Can be any of the specified profiles in the <code>Ruda.toml</code> file.</li>
+<li><code>3rdparty</code>: Sets the 3rd party policy for the package and its dependencies.</li>
+</ul>
+<h2 id="profiles">Profiles</h2>
+<p>Profiles are specified in the <code>[profiles]</code> section of the <code>Ruda.toml</code> file.</p>
+<pre><code class="language-toml">[profiles.embed]
+3rdparty = &quot;deny&quot;
+</code></pre>
+<h2 id="global-configuration">Global Configuration</h2>
+<p>All projects share the same global configuration, which is located in the <code>path/to/ruda/Ruda.toml</code> file.</p>
+<p>If you do not specify a field in the project configuration, it will use the value from the global configuration.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../packages/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../packages/" class="btn btn-xs btn-link">
+        Packages
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

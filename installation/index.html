@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Installation - Ruda</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Installation", url: "#_top", children: [
+              {title: "Building from source", url: "#building-from-source" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-link">
+        0. New Project
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="installation">Installation</h1>
+<blockquote>
+<p><strong><em>Important:</em></strong>  Ruda installer is currently under development. This guide will be updated once it is ready.</p>
+</blockquote>
+<h2 id="building-from-source">Building from source</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li><a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li><a href="https://www.python.org/downloads/">Python</a></li>
+</ul>
+<h3 id="steps">Steps</h3>
+<h4 id="1-clone-the-repository">1. Clone the repository</h4>
+<pre><code class="language-bash">git clone https://github.com/it-2001/Ruda
+</code></pre>
+<h4 id="2-run-the-build-script">2. Run the build script</h4>
+<pre><code class="language-bash">cd Ruda
+py ruda_build.py
+</code></pre>
+<p>This will create a <code>build</code> directory containing the necessary files.</p>
+<h4 id="3-add-the-buildbin-directory-to-your-path-environment-variable">3. Add the <code>build/bin</code> directory to your <code>PATH</code> environment variable</h4>
+<blockquote>
+<p>See <a href="https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/">this guide</a> for instructions on how to do this on Windows.</p>
+</blockquote>
+<h4 id="4-create-a-new-environment-variable-called-ruda_path-and-set-it-to-the-build-directory">4. Create a new environment variable called <code>RUDA_PATH</code> and set it to the <code>build</code> directory</h4>
+<h4 id="5-run-ruda-to-check-if-everything-is-working">5. Run <code>ruda</code> to check if everything is working</h4>
+<pre><code class="language-bash">ruda -V
+</code></pre>
+<p>If everything is working, you should see the following output:</p>
+<pre><code class="language-bash">Ruda pacman x.x.x
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../tutorial/new-project/" class="btn btn-xs btn-link">
+        0. New Project
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

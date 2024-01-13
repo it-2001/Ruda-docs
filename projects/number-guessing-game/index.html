@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>1. Number Guessing Game - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Number guessing game", url: "#_top", children: [
+              {title: "What are we building?", url: "#what-are-we-building" },
+              {title: "Requirements", url: "#requirements" },
+              {title: "Example", url: "#example" },
+              {title: "Tips", url: "#tips" },
+              {title: "Strategy", url: "#strategy" },
+              {title: "Solution", url: "#solution" },
+              {title: "Explanation", url: "#explanation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../pacman/help/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../pacman/help/" class="btn btn-xs btn-link">
+        Help
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../cheatsheet/syntax/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../cheatsheet/syntax/" class="btn btn-xs btn-link">
+        Syntax
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="number-guessing-game">Number guessing game</h1>
+<p>This is probably your first time writing a program in Ruda. Good luck!</p>
+<h2 id="what-are-we-building">What are we building?</h2>
+<p>In this project you will create a number guessing game. The computer will think of a predefined number between 1 and 100 and you will try to guess it. The computer will tell you if your guess is too high or too low.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>The user should be able to guess the number.</li>
+<li>The computer should tell the user if their guess is too high or too low.</li>
+<li>The user should be able to quit the game at any time.</li>
+<li>The user should be told how many guesses it took them to guess the number when they win.</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="language-bash">Welcome to the number guessing game!
+I am thinking of a number between 1 and 100.
+Guess the number: 50
+Too high!
+Guess the number: 25
+Too low!
+Guess the number: 37
+Too high!
+Guess the number: 31
+Too high!
+Guess the number: 28
+Too low!
+Guess the number: 29
+You win! It took you 6 guesses.
+Do you want to play again? (y/n): n
+</code></pre>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Use the <code>io.inputln()</code> function to read user input.</li>
+<li>Use the <code>io.println()</code> function to print output.</li>
+<li>String library contains <code>parse()</code> function that can be used to convert user input to a number.</li>
+<li>The generated number can be constant.</li>
+</ul>
+<h2 id="strategy">Strategy</h2>
+<blockquote>
+<p>This is a good time to start thinking about how you will structure your code.</p>
+</blockquote>
+<p>In my head I'm focusing on the following parts:
+- Ability to ask the user for input until they guess the correct number.
+- Changing the game answer based on the user's input.
+- Keeping track of how many guesses the user has made.
+- Telling the user how many guesses they made when they win.</p>
+<h2 id="solution">Solution</h2>
+<blockquote>
+<p>NO CHEATING!
+Just kidding, but seriously try to solve the problem yourself before looking at the solution.</p>
+</blockquote>
+<pre><code class="language-ruda">import &quot;#io&quot;
+import &quot;#string&quot;
+
+
+fun main() {
+    let answer = 29
+    let guesses = 0
+
+    io.println(&quot;Welcome to the number guessing game!&quot;)
+    io.println(&quot;I am thinking of a number between 1 and 100.&quot;)
+
+    loop {
+        io.print(&quot;Guess the number: &quot;)
+        let guess = string.parse(io.inputln())
+
+        guesses += 1
+
+        if guess &lt; answer {
+            io.println(&quot;Too low!&quot;)
+        } else if guess &gt; answer {
+            io.println(&quot;Too high!&quot;)
+        } else {
+            io.println(&quot;You win! It took you &quot; + guesses as string + &quot; guesses.&quot;)
+            break
+        }
+    }
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>Let's go over the solution.</p>
+<p>First we import the <code>io</code> and <code>string</code> libraries.</p>
+<pre><code class="language-ruda">import &quot;#io&quot;
+import &quot;#string&quot;
+</code></pre>
+<p>Then we define the <code>main()</code> function. This is the entry point of our program.</p>
+<pre><code class="language-ruda">fun main() {
+    // ...
+}
+</code></pre>
+<p>Then we create a variable called <code>guesses</code> and assign it the value of <code>0</code>. This variable will be used to keep track of how many guesses the user has made. We also create a variable called <code>answer</code> and assign it the value of <code>29</code>. This variable will be used to store the answer to the game.</p>
+<pre><code class="language-ruda">
+```ruda
+let guesses = 0
+let answer = 29
+</code></pre>
+<p>After the initial setup, we print a welcome message and tell the user that we are thinking of a number between 1 and 100.</p>
+<pre><code class="language-ruda">io.println(&quot;Welcome to the number guessing game!&quot;)
+io.println(&quot;I am thinking of a number between 1 and 100.&quot;)
+</code></pre>
+<p>Then we start a loop that will keep asking the user for input until they guess the correct number.</p>
+<pre><code class="language-ruda">loop {
+    // ...
+}
+</code></pre>
+<p>Inside the loop we ask the user to guess the number and read their input. We convert the user's input to a number using the <code>string.parse()</code> function.</p>
+<pre><code class="language-ruda">io.print(&quot;Guess the number: &quot;)
+let guess = string.parse(io.inputln())
+</code></pre>
+<p>Then we increment the <code>guesses</code> variable by <code>1</code> to keep track of how many guesses the user has made.</p>
+<pre><code class="language-ruda">guesses += 1
+</code></pre>
+<p>Then we check if the user's guess is less than the answer. If it is, we tell the user that their guess is too low.</p>
+<pre><code class="language-ruda">if guess &lt; answer {
+    io.println(&quot;Too low!&quot;)
+}
+</code></pre>
+<p>If the user's guess is not less than the answer, we check if it is greater than the answer. If it is, we tell the user that their guess is too high.</p>
+<pre><code class="language-ruda">} else if guess &gt; answer {
+    io.println(&quot;Too high!&quot;)
+}
+</code></pre>
+<p>If the user's guess is not less than or greater than the answer, it must be equal to the answer. In this case we tell the user that they won and how many guesses it took them to guess the number.</p>
+<pre><code class="language-ruda">} else {
+    io.println(&quot;You win! It took you &quot; + guesses as string + &quot; guesses.&quot;)
+    break
+}
+</code></pre>
+<p>Finally we break out of the loop and the program ends.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../pacman/help/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../pacman/help/" class="btn btn-xs btn-link">
+        Help
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../cheatsheet/syntax/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../cheatsheet/syntax/" class="btn btn-xs btn-link">
+        Syntax
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

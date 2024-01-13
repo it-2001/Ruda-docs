@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Debugging - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Debugging", url: "#_top", children: [
+              {title: "Locate", url: "#locate" },
+              {title: "Restore", url: "#restore" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../packages/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../packages/" class="btn btn-xs btn-link">
+        Packages
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../building/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../building/" class="btn btn-xs btn-link">
+        Building
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="debugging">Debugging</h1>
+<h2 id="locate">Locate</h2>
+<p>If you think there is a problem with the source of included libraries, you can locate them by running <code>ruda locate &lt;name&gt;</code> or <code>ruda locate &lt;git_url&gt;</code>.</p>
+<p>This will print the path to the source code of the library.</p>
+<p>Example:</p>
+<pre><code class="language-toml">// Ruda.toml
+[dependencies]
+algebra = &quot;https://git/repository/algebra.git&quot;
+</code></pre>
+<pre><code>ruda locate algebra
+</code></pre>
+<p>Output:</p>
+<pre><code>/path/to/ruda/packages/author/algebra
+</code></pre>
+<p>Then you can open the source code in your editor and debug it.</p>
+<h3 id="no-args">No args</h3>
+<p>If you run <code>ruda locate</code> without any arguments, it will print the path to the <code>Ruda</code> directory.</p>
+<p>To get path to the Ruda packages directory, run <code>ruda locate</code> and append <code>/packages</code> to the path.</p>
+<h2 id="restore">Restore</h2>
+<p>If you think there is a problem with the compiler artifacts, you can restore them by running <code>ruda restore</code>.</p>
+<p>This will remove the <code>target</code> directory.</p>
+<h3 id="options">Options</h3>
+<ul>
+<li><code>--help</code>: Prints help information.</li>
+<li><code>--profile &lt;profile&gt;</code>: Sets the profile of the build. Can be any of the specified profiles in the <code>Ruda.toml</code> file.</li>
+<li><code>--compile</code>: Compiles the project after restoring the artifacts.</li>
+<li><code>--run</code>: Runs the project after restoring the artifacts.</li>
+</ul>
+<blockquote>
+<p>Also feel free to report any issues you find with the compiler or standard library on the <a href="https://github.com/it-2001/Ruda/issues">GitHub repository</a></p>
+</blockquote>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../packages/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../packages/" class="btn btn-xs btn-link">
+        Packages
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../building/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../building/" class="btn btn-xs btn-link">
+        Building
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

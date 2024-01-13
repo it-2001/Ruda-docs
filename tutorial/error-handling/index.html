@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>14. Error Handling - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Error handling", url: "#_top", children: [
+              {title: "Catch statements", url: "#catch-statements" },
+              {title: "Yeet", url: "#yeet" },
+              {title: "Error", url: "#error" },
+              {title: "Bang operator", url: "#bang-operator" },
+              {title: "Error declaration", url: "#error-declaration" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../advanced/hi/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../advanced/hi/" class="btn btn-xs btn-link">
+        0. Hello
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../modules/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="error-handling">Error handling</h1>
+<blockquote>
+<p>⚠️ Not implemented ⚠️: This feature is planned for the next update.</p>
+</blockquote>
+<p>Sometimes an operation can fail. For example, if you try to open a file that doesn't exist, or if you try to divide by zero. In Ruda, you can handle these errors using the <code>try</code> keyword.</p>
+<pre><code class="language-ruda">try {
+    let file = io.open(&quot;file.txt&quot;)
+} catch err {
+    io.println(err)
+}
+</code></pre>
+<p>The <code>try</code> keyword is used to call a function that can fail. If the function fails, the <code>catch</code> block is executed. The <code>catch</code> block is used to handle the error.</p>
+<p>The <code>catch</code> block takes a variable that stores the error.</p>
+<h2 id="catch-statements">Catch statements</h2>
+<p>You can have multiple <code>catch</code> statements to handle different errors.</p>
+<pre><code class="language-ruda">try {
+    let file = io.open(&quot;file.txt&quot;)
+} catch err: io.FileNotFound {
+    io.println(err.msg())
+} catch err {
+    io.println(err.msg())
+}
+</code></pre>
+<h2 id="yeet">Yeet</h2>
+<p>The <code>yeet</code> keyword is used to throw an error.</p>
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
+    if y == 0 {
+        yeet Error(&quot;cannot divide by zero&quot;)
+    }
+
+    return x / y
+}
+</code></pre>
+<h2 id="error">Error</h2>
+<p>If you dont need to throw an error but you don't care about the error type, you can use the <code>Error</code> type as shown above.</p>
+<h2 id="bang-operator">Bang operator</h2>
+<p>If we don't want to handle the error, we can use the bang operator to ignore the error. It will be forwarded to the caller.</p>
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
+    if y == 0 {
+        yeet Error(&quot;cannot divide by zero&quot;)
+    }
+
+    return x / y
+}
+
+fun main() {
+    let result = divide(10, 0)! // this will crash
+}
+</code></pre>
+<h2 id="error-declaration">Error declaration</h2>
+<p>You can declare an error type using the <code>error</code> keyword.</p>
+<pre><code class="language-ruda">error DivisionByZeroError(number: int) {
+    message: &quot;cannot divide by zero&quot;,
+    code: 1,
+}
+</code></pre>
+<p>This can be used like this:</p>
+<pre><code class="language-ruda">fun divide(x: int, y: int)!: int {
+    if y == 0 {
+        yeet DivisionByZeroError(y)
+    }
+
+    return x / y
+}
+</code></pre>
+<p>The error field code is optional. It can be used to identify the error. Default value is 1.</p>
+<p>You can also take message as an argument.</p>
+<pre><code class="language-ruda">error Error(message: string?) {
+    message: {
+        if message? {
+            return message
+        } else {
+            return &quot;something went wrong&quot;
+        }
+    }
+    code: 1,
+}
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../advanced/hi/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../advanced/hi/" class="btn btn-xs btn-link">
+        0. Hello
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../modules/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../modules/" class="btn btn-xs btn-link">
+        13. Modules
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

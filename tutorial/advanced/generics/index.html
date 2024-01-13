@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>1. Generics - Ruda</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Generics", url: "#_top", children: [
+              {title: "Syntax", url: "#syntax" },
+              {title: "Constraints", url: "#constraints" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../traits/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../traits/" class="btn btn-xs btn-link">
+        2. Traits
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../hi/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../hi/" class="btn btn-xs btn-link">
+        0. Hello
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="generics">Generics</h1>
+<blockquote>
+<p>⚠️ Experimental feature ⚠️: While simple examples work this is still in early development and more useful use cases are not supported yet. It is <strong>not recommended</strong> to use this.</p>
+</blockquote>
+<p>Generics are a feature that allows you to write code that can be reused for different types. For example, you might want to write a function that returns the first element of any array. This is a generic function because it can be used for any type of array, like an array of strings or an array of numbers.</p>
+<pre><code class="language-ruda">fun first&lt;T&gt;(array: [T]): T {
+    return array[0]
+}
+
+fun main() {
+    let array = [&quot;hello&quot;, &quot;world&quot;]
+    let first = first(array)
+}
+</code></pre>
+<p>In this example, the <code>first</code> function is generic because it can be used for any type of array. The <code>T</code> in the function signature is a type parameter. It can be replaced with any type when the function is called.</p>
+<h2 id="syntax">Syntax</h2>
+<p>Generics are enclosed in angle brackets (<code>&lt;</code> and <code>&gt;</code>). The type parameters are separated by commas (<code>,</code>) and each type parameter can have a <a href="#constraints">constraint</a>.</p>
+<pre><code class="language-ruda">fun foo&lt;T, U&gt;(x: T, y: U): T {
+    return x
+}
+
+struct Bar&lt;T, U&gt; {
+    x: T,
+    y: U,
+}
+
+trait Baz&lt;T, U&gt; {
+    fun foo(x: T, y: U): T
+}
+</code></pre>
+<h2 id="constraints">Constraints</h2>
+<p>Type parameters can have constraints. A constraint is a type that the type parameter must be a subtype of. For example, if we want to write a function that takes two numbers and returns the larger one, we can use the <code>Comparable</code> trait as a constraint.</p>
+<pre><code class="language-ruda">fun max&lt;T(Comparable)&gt;(x: T, y: T): T {
+    if x &gt; y {
+        return x
+    } else {
+        return y
+    }
+}
+</code></pre>
+<p>In this example, the <code>T</code> type parameter must be a subtype of the <code>Comparable</code> trait. This means that the <code>T</code> type parameter must implement the <code>Comparable</code> trait.</p>
+<blockquote>
+<p>Note: The <code>Comparable</code> trait allows you to compare two values using the <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and <code>&gt;=</code> operators. Those types must be the same.
+This means that you can't compare <code>T (Comparable)</code> with <code>U (Comparable)</code>. <code>T</code> and <code>U</code> are not guaranteed to be the same type.</p>
+</blockquote>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../traits/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../traits/" class="btn btn-xs btn-link">
+        2. Traits
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../hi/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../hi/" class="btn btn-xs btn-link">
+        0. Hello
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

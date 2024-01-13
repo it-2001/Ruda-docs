@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>11. Pointers - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Pointers", url: "#_top", children: [
+              {title: "What is a pointer?", url: "#what-is-a-pointer" },
+              {title: "Creating a pointer", url: "#creating-a-pointer" },
+              {title: "Dereferencing a pointer", url: "#dereferencing-a-pointer" },
+              {title: "Pointers to pointers", url: "#pointers-to-pointers" },
+              {title: "Why use pointers?", url: "#why-use-pointers" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../methods/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../methods/" class="btn btn-xs btn-link">
+        12. Methods
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../enums/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../enums/" class="btn btn-xs btn-link">
+        10. Enums
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="pointers">Pointers</h1>
+<p>We have already seen pointers in the <a href="/tutorial/data-types/#pointers">Data types</a> section. In this section we will learn more about pointers.</p>
+<h2 id="what-is-a-pointer">What is a pointer?</h2>
+<p>A pointer is a variable that stores the address of another variable. In other words, a pointer points to another variable.</p>
+<h2 id="creating-a-pointer">Creating a pointer</h2>
+<p>Pointers are created using the <code>&amp;</code> operator.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr = &amp;x
+</code></pre>
+<p>This creates a pointer named <code>ptr</code> that points to the variable <code>x</code>.</p>
+<p>When we print the value of <code>ptr</code>, we get the address of <code>x</code>.</p>
+<pre><code class="language-ruda">io.println(ptr) // a big number
+</code></pre>
+<h2 id="dereferencing-a-pointer">Dereferencing a pointer</h2>
+<p>Dereferencing a pointer means accessing the value stored at the address pointed to by the pointer.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr = &amp;x
+io.println(*ptr) // 1
+</code></pre>
+<p>The <code>*</code> operator is used to dereference a pointer.</p>
+<h2 id="pointers-to-pointers">Pointers to pointers</h2>
+<p>Pointers can also point to other pointers.</p>
+<pre><code class="language-ruda">let x: int = 1
+
+let ptr1 = &amp;x
+let ptr2 = &amp;ptr1
+
+io.println(*ptr2) // a big number
+io.println(**ptr2) // 1
+</code></pre>
+<h2 id="why-use-pointers">Why use pointers?</h2>
+<p>Pointers are useful for passing variables by reference. This means that the function can modify the variable passed to it.</p>
+<pre><code class="language-ruda">fun addOne(x: &amp;int) {
+    *x = *x + 1
+}
+
+let x: int = 1
+addOne(&amp;x)
+io.println(x) // 2
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../methods/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../methods/" class="btn btn-xs btn-link">
+        12. Methods
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../enums/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../enums/" class="btn btn-xs btn-link">
+        10. Enums
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

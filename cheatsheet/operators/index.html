@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Operators - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Operators", url: "#_top", children: [
+              {title: "Arithmetic Operators", url: "#arithmetic-operators" },
+              {title: "Comparison Operators", url: "#comparison-operators" },
+              {title: "Logical Operators", url: "#logical-operators" },
+              {title: "Error Handling Operators", url: "#error-handling-operators" },
+              {title: "Bitwise Operators", url: "#bitwise-operators" },
+              {title: "Assignment Operators", url: "#assignment-operators" },
+              {title: "Other Operators", url: "#other-operators" },
+          ]},
+          {title: "Order of Operations", url: "#order-of-operations", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../syntax/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../syntax/" class="btn btn-xs btn-link">
+        Syntax
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../keywords/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../keywords/" class="btn btn-xs btn-link">
+        Keywords
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="operators">Operators</h1>
+<p>Here is a list of all the operators in the language.</p>
+<h2 id="arithmetic-operators">Arithmetic Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Adds two values</td>
+<td><code>5 + 5</code> = <code>10</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtracts two values</td>
+<td><code>5 - 5</code> = <code>0</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiplies two values</td>
+<td><code>5 * 5</code> = <code>25</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Divides two values</td>
+<td><code>5 / 5</code> = <code>1</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Returns the remainder of two values</td>
+<td><code>7 % 5</code> = <code>2</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="comparison-operators">Comparison Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Returns true if two values are equal</td>
+<td><code>5 == 5</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Returns true if two values are not equal</td>
+<td><code>5 != 5</code> = <code>false</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Returns true if the first value is less than the second value</td>
+<td><code>5 &lt; 6</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Returns true if the first value is greater than the second value</td>
+<td><code>5 &gt; 6</code> = <code>false</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Returns true if the first value is less than or equal to the second value</td>
+<td><code>5 &lt;= 6</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Returns true if the first value is greater than or equal to the second value</td>
+<td><code>5 &gt;= 6</code> = <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="logical-operators">Logical Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Returns true if both values are true</td>
+<td><code>true &amp;&amp; false</code> = <code>false</code></td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>Returns true if either value is true</td>
+<td><code>true || false</code> = <code>true</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Returns true if the value is false</td>
+<td><code>!true</code> = <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-handling-operators">Error Handling Operators</h2>
+<blockquote>
+<p>Note: Also have a look at <a href="/tutorial/error-handling/#bang-operator">Bang</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?</code></td>
+<td>Returns whether or not an expression is null</td>
+<td><code>x?</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Forwards an error that occurs in a function</td>
+<td><code>foo()!</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bitwise-operators">Bitwise Operators</h2>
+<blockquote>
+<p>Not implemented yet.</p>
+</blockquote>
+<h2 id="assignment-operators">Assignment Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>Assigns a value to a variable</td>
+<td><code>x = 5</code></td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>Adds a value to a variable</td>
+<td><code>x += 5</code></td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Subtracts a value from a variable</td>
+<td><code>x -= 5</code></td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Multiplies a variable by a value</td>
+<td><code>x *= 5</code></td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Divides a variable by a value</td>
+<td><code>x /= 5</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="other-operators">Other Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>Accesses a member of a struct</td>
+<td><code>foo.bar</code></td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Accesses an element of an array</td>
+<td><code>foo[0]</code></td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>Calls a function</td>
+<td><code>foo()</code></td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>Declares a type</td>
+<td><code>let x: int = 5</code></td>
+</tr>
+<tr>
+<td><code>;</code></td>
+<td>Ends a statement</td>
+<td><code>let x = 5;</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="order-of-operations">Order of Operations</h1>
+<p>Order of operations is the order in which operators are evaluated. For example, in the expression <code>5 + 5 * 5</code>, the multiplication operator (<code>*</code>) is evaluated before the addition operator (<code>+</code>). This means that the expression is evaluated as <code>5 + (5 * 5)</code>, which equals <code>30</code>.</p>
+<p>The order of operations is as follows:</p>
+<ol>
+<li>Parentheses: <code>()</code></li>
+<li>Unary operators: <code>!</code>, <code>-</code>, <code>new</code></li>
+<li>Multiplication and division: <code>*</code>, <code>/</code>, <code>%</code></li>
+<li>Addition and subtraction: <code>+</code>, <code>-</code></li>
+<li>Comparison operators: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>Logical operators: <code>&amp;&amp;</code>, <code>||</code></li>
+</ol>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../syntax/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../syntax/" class="btn btn-xs btn-link">
+        Syntax
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../keywords/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../keywords/" class="btn btn-xs btn-link">
+        Keywords
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

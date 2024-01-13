@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>3. Overloading - Ruda</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Operator Overloading", url: "#_top", children: [
+              {title: "Syntax", url: "#syntax" },
+              {title: "Traits", url: "#traits" },
+              {title: "Overloadable operators", url: "#overloadable-operators" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../memory/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../memory/" class="btn btn-xs btn-link">
+        4. Memory Management
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../traits/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../traits/" class="btn btn-xs btn-link">
+        2. Traits
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="operator-overloading">Operator Overloading</h1>
+<blockquote>
+<p>⚠️ This feature is unlikely to ever be implemented ⚠️: Source code should work the way you expect it to. Operator overloads may cause a lot of confusion. TLDR: bad </p>
+</blockquote>
+<p>This is a feature that allows you to define the behavior of operators when applied to your own types. For example, you can define what happens when you add two instances of your class together, or when you compare them for equality.</p>
+<h2 id="syntax">Syntax</h2>
+<p>Operator overloading is done inside the <code>impl</code> block of a type. The operator is defined using the <code>operator</code> keyword.</p>
+<pre><code class="language-ruda">struct Foo {
+    x: int,
+}
+
+impl Foo {
+    operator + (other: Foo): Foo {
+        return Foo(self.x + other.x)
+    }
+
+    operator == (other: Foo): bool {
+        return self.x == other.x
+    }
+
+    fun Foo(x: int) {
+        self.x = x
+    }
+}
+</code></pre>
+<h2 id="traits">Traits</h2>
+<p>You can also define operators for <a href="/tutorial/advanced/traits">traits</a>. This is useful if you want to define operators for multiple types.</p>
+<pre><code class="language-ruda">trait Add {
+    operator + (other: Self): Self
+}
+
+struct Foo {
+    x: int,
+}
+
+impl Foo trait Add {
+    operator + (other: Foo): Foo {
+        return Foo(self.x + other.x)
+    }
+}
+</code></pre>
+<h2 id="overloadable-operators">Overloadable operators</h2>
+<p>The following operators can be overloaded:</p>
+<ul>
+<li><code>+</code></li>
+<li><code>-</code></li>
+<li><code>*</code></li>
+<li><code>/</code></li>
+<li><code>%</code></li>
+<li><code>==</code></li>
+<li><code>!=</code></li>
+<li><code>&lt;</code></li>
+<li><code>&gt;</code></li>
+<li><code>&lt;=</code></li>
+<li><code>&gt;=</code></li>
+<li><code>!</code></li>
+<li><code>&amp;&amp;</code></li>
+<li><code>||</code></li>
+<li><code>&amp;</code></li>
+<li><code>|</code></li>
+<li><code>[</code></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../memory/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../memory/" class="btn btn-xs btn-link">
+        4. Memory Management
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../traits/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../traits/" class="btn btn-xs btn-link">
+        2. Traits
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

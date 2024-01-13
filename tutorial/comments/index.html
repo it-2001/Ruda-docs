@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>4. Comments - Ruda</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Comments", url: "#_top", children: [
+              {title: "Single-line comments", url: "#single-line-comments" },
+              {title: "Multi-line comments", url: "#multi-line-comments" },
+              {title: "Why use comments?", url: "#why-use-comments" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../control-flow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../control-flow/" class="btn btn-xs btn-link">
+        5. Control Flow
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../operators/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../operators/" class="btn btn-xs btn-link">
+        3. Operators
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="comments">Comments</h1>
+<p>Comments are ignored by the compiler and are used to document the code.</p>
+<h2 id="single-line-comments">Single-line comments</h2>
+<p>Single-line comments start with <code>//</code> and end at the end of the line.</p>
+<pre><code class="language-ruda">// This is a single-line comment
+</code></pre>
+<h2 id="multi-line-comments">Multi-line comments</h2>
+<p>Multi-line comments start with <code>/*</code> and end with <code>*/</code>.</p>
+<pre><code class="language-ruda">/*
+This is a multi-line comment
+*/
+</code></pre>
+<h2 id="why-use-comments">Why use comments?</h2>
+<p>Comments are used to document the code. They are ignored by the compiler and are not executed. They are used to explain the code to other programmers.</p>
+<p>example:</p>
+<pre><code class="language-ruda">// This program prints &quot;Hello world&quot; to the console
+
+import &quot;std.io&quot;
+
+fun main() {
+    io.println(&quot;Hello world&quot;)
+}
+</code></pre>
+<p>Compare this snippet from Hello world:</p>
+<pre><code class="language-ruda">import &quot;std.io&quot;
+
+fun main() {
+    io.println(&quot;Hello world&quot;)
+}
+</code></pre>
+<p>They both do the same thing, but the commented one is much easier to understand.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../control-flow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../control-flow/" class="btn btn-xs btn-link">
+        5. Control Flow
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../operators/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../operators/" class="btn btn-xs btn-link">
+        3. Operators
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
